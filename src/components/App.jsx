@@ -21,6 +21,7 @@ import LoginPage from './Pages/LoginPage/LoginPage';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
 
 import './App.css';
+import NewTemplate from './Pages/newTemplatePage/newTemplate';
 
 function App() {
   const dispatch = useDispatch();
@@ -112,6 +113,9 @@ function App() {
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
+            <Route path="/test">
+              <NewTemplate/>
+            </Route>
             <h1>404</h1>
           </Route>
         </Switch>
