@@ -98,4 +98,17 @@ router.delete("/user_exercise/:id", (req, res) => {
     });
 });
 
+//DELETE ROUTE FOR DELETING A TEMPLATE.
+router.delete("/workout_template/:id", (req,res) =>{
+  const id= req.params.id;
+  console.log("This is id", id);
+  const QUERYTEXT = `DELETE FROM "workouts" WHERE id=$1;`;pool.query(QUERYTEXT, [id]).then(() =>{
+    console.log("Template Deleted at id of ", id);
+    res.sendStatus(204);
+  }).catch((error) =>{
+    console.log("error in deleting template line 109", error)
+  })
+}
+)
+
 module.exports = router;
