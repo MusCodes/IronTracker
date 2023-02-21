@@ -111,4 +111,24 @@ router.delete("/workout_template/:id", (req,res) =>{
 }
 )
 
+// Update TemplateName
+router.put("/workout_template/:id", (req, res) => {
+  const id = req.params.id;
+  const template_name = req.body.template_name;
+  const QUERYTEXT = `UPDATE "workouts"
+    SET "template_name" = $1
+    WHERE id = $2;`;
+
+  pool
+    .query(QUERYTEXT, [template_name, id])
+    .then(() => {
+      console.log("Workout template updated successfully.");
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("Error in updating Workout Template line 122", error);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
