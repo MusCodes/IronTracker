@@ -83,7 +83,7 @@ router.post("/workout_template", (req, res) => {
 //DELETE a set on user_exercise
 router.delete("/user_exercise/:id", (req, res) => {
   const id = req.params.id;
-  
+
   console.log("THIS IS ID", id);
 
   const QUERYTEXT = `DELETE FROM "user_exercise" WHERE id = $1;`;
@@ -99,17 +99,20 @@ router.delete("/user_exercise/:id", (req, res) => {
 });
 
 //DELETE ROUTE FOR DELETING A TEMPLATE.
-router.delete("/workout_template/:id", (req,res) =>{
-  const id= req.params.id;
+router.delete("/workout_template/:id", (req, res) => {
+  const id = req.params.id;
   console.log("This is id", id);
-  const QUERYTEXT = `DELETE FROM "workouts" WHERE id=$1;`;pool.query(QUERYTEXT, [id]).then(() =>{
-    console.log("Template Deleted at id of ", id);
-    res.sendStatus(204);
-  }).catch((error) =>{
-    console.log("error in deleting template line 109", error)
-  })
-}
-)
+  const QUERYTEXT = `DELETE FROM "workouts" WHERE id=$1;`;
+  pool
+    .query(QUERYTEXT, [id])
+    .then(() => {
+      console.log("Template Deleted at id of ", id);
+      res.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log("error in deleting template line 109", error);
+    });
+});
 
 // Update TemplateName
 router.put("/workout_template/:id", (req, res) => {
@@ -128,6 +131,25 @@ router.put("/workout_template/:id", (req, res) => {
     .catch((error) => {
       console.log("Error in updating Workout Template line 122", error);
       res.sendStatus(500);
+    });
+});
+
+// Update reps/sets on user_exercise table.
+router.put("/user_exercise/:id", (req, res) => {
+  const id = req.params.id;
+  const weight = req.body.weight;
+  const reps = req.body.reps;
+  const QUERYTEXT = `UPDATE "user_exercise"
+  SET "weight" = $1, "reps" = $2
+  WHERE id = $3;`;
+  pool
+    .query(QUERYTEXT, [weight, reps, id])
+    .then(() => {
+      console.log("Updated weight and reps successfully");
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("error in updating weight/reps line 144", error);
     });
 });
 
