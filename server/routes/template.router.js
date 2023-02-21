@@ -80,4 +80,22 @@ router.post("/workout_template", (req, res) => {
     });
 });
 
+//DELETE a set on user_exercise
+router.delete("/user_exercise/:id", (req, res) => {
+  const id = req.params.id;
+  
+  console.log("THIS IS ID", id);
+
+  const QUERYTEXT = `DELETE FROM "user_exercise" WHERE id = $1;`;
+  pool
+    .query(QUERYTEXT, [id])
+    .then((response) => {
+      console.log("set deleted at id of", id);
+      res.sendStatus(204);
+    })
+    .catch((error) => {
+      console.log("error in deleting set line 91", error);
+    });
+});
+
 module.exports = router;
