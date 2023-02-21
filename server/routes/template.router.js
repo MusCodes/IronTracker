@@ -58,7 +58,26 @@ router.post("/user_exercise", (req, res) => {
     .catch((error) => {
       console.log("error with user_exercise POST line 54", error);
     });
-  // POST route code here
+});
+
+//Workout Template Post Route.
+router.post("/workout_template", (req, res) => {
+  console.log(req.body);
+  const QUERYTEXT = `INSERT INTO "workouts" ("user_id", "template_name", "created_at")
+  VALUES ($1,$2,$3);`;
+
+  pool
+    .query(QUERYTEXT, [
+      req.body.user_id,
+      req.body.template_name,
+      req.body.created_at,
+    ])
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("error with user_exercise POST line 54", error);
+    });
 });
 
 module.exports = router;
