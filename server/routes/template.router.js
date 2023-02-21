@@ -3,7 +3,7 @@ const pool = require("../modules/pool");
 const router = express.Router();
 
 /**
- * GET route template
+This is the get route for my user_exercise table.
  */
 router.get("/user_exercise", (req, res) => {
   const QUERYTEXT = `SELECT * FROM "user_exercise";`;
@@ -13,10 +13,22 @@ router.get("/user_exercise", (req, res) => {
       res.send(results.rows);
     })
     .catch((error) => {
-      console.log("error in GET line 12", error);
+      console.log("error in user_exercise GET ROUTE line 16", error);
       res.sendStatus(500);
     });
-  // GET route code here
+});
+// This is our get route for the workout template.
+router.get("/workout_template", (req, res) => {
+  const QUERYTEXT = `SELECT * FROM "workouts";`;
+  pool
+    .query(QUERYTEXT)
+    .then((results) => {
+      res.send(results.rows);
+    })
+    .catch((error) => {
+      console.log("error in workout_template GET ROUTE line 29", error);
+      res.sendStatus(500);
+    });
 });
 
 /**
