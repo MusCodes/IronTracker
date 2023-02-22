@@ -39,7 +39,7 @@ router.get("/workout_template", (req, res) => {
 // this is the post Route for the user exercise table.
 router.post("/user_exercise", (req, res) => {
   console.log(req.body);
-  const QUERYTEXT = `INSERT INTO "user_exercise" ("exercise_name", "workout_id", "sets", "previous","weight","reps","completed_at","completed" )
+  const QUERYTEXT = `INSERT INTO "user_exercise" ("exercise_name", "workout_id", "sets", "previous","weight","reps","completed","completed_at" )
   VALUES ($1,$2,$3,$4,$5,$6,$7,$8);`;
 
   pool
@@ -50,8 +50,9 @@ router.post("/user_exercise", (req, res) => {
       req.body.previous,
       req.body.weight,
       req.body.reps,
-      req.body.completed_at,
+      // req.body.completed_at,
       req.body.completed,
+      'now()'
     ])
     .then((result) => {
       res.sendStatus(201);

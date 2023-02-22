@@ -1,8 +1,10 @@
 import { useState } from "react";
+import axios from "axios";
+
 
 function TableWithInputs() {
   const [rows, setRows] = useState([
-    { name: "", sets: "", previous: "", weight: "", reps: "", time: "" },
+    { exercise_name: "", workout_id:"", sets: "", previous: "", weight: "", reps: "", completed_at: "" },
   ]);
 
   function handleRowChange(event, rowIndex, fieldName) {
@@ -10,14 +12,32 @@ function TableWithInputs() {
     setRows((prevRows) => {
       const newRows = [...prevRows];
       newRows[rowIndex][fieldName] = value;
+      newRows[rowIndex].completed = false; // Add a new property to track completion
       return newRows;
     });
   }
+  
+
+  //
+  function sendDataToServer(data) {
+    axios.post("/api/workouts/user_exercise", data)
+      .then(response => {
+        console.log("THIS IS DATA!", data);
+        console.log("THIS IS RESPONSe", response);
+        console.log("THIS IS RESPONSE.DATA !",response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+  
+
+  //
 
   function handleAddRow() {
     setRows((prevRows) => [
       ...prevRows,
-      { name: "", sets: "", previous: "", weight: "", reps: "", time: "" },
+      { exercise_name: "", workout_id:"", sets: "", previous: "", weight: "", reps: "", completed_at: "" },
     ]);
   }
 
@@ -27,6 +47,7 @@ function TableWithInputs() {
         <thead>
           <tr>
             <th>Exercise Name</th>
+            <th> WorkoutID</th>
             <th>SETS</th>
             <th>Previous</th>
             <th>Weight</th>
@@ -38,13 +59,23 @@ function TableWithInputs() {
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
+            
             <tr key={rowIndex}>
+                {console.log("THIS IS ROW!!!!",row)}
               <td>
                 <input
                   type="text"
-                  name="name"
-                  value={row.name}
-                  onChange={(event) => handleRowChange(event, rowIndex, "name")}
+                  name="exercise_name"
+                  value={row.exercise_name}
+                  onChange={(event) => handleRowChange(event, rowIndex, "exercise_name")}
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  name="workout_id"
+                  value={row.workout_id}
+                  onChange={(event) => handleRowChange(event, rowIndex, "workout_id")}
                 />
               </td>
               <td>
@@ -85,20 +116,24 @@ function TableWithInputs() {
               </td>
               <td>
                 <input
-                  type="Time"
+                  type="time"
                   name="time"
-                  value={row.time}
-                  onChange={(event) => handleRowChange(event, rowIndex, "time")}
+                  value={row.completed_at}
+                  onChange={(event) => handleRowChange(event, rowIndex, "completed_at")}
                 />
               </td>
               <td>
-                <button>Complete</button>
+              <td>
+  <button onClick={() => sendDataToServer(rows[rowIndex])}>Complete</button>
+</td>
+
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <button onClick={handleAddRow}>Add Set</button>
+      
     </div>
   );
 }
