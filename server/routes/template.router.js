@@ -39,11 +39,12 @@ router.get("/workout_template", (req, res) => {
 // this is the post Route for the user exercise table.
 router.post("/user_exercise", (req, res) => {
   console.log(req.body);
-  const QUERYTEXT = `INSERT INTO "user_exercise" ("workout_id", "sets", "previous","weight","reps","completed_at","completed" )
-  VALUES ($1,$2,$3,$4,$5,$6,$7);`;
+  const QUERYTEXT = `INSERT INTO "user_exercise" ("exercise_name", "workout_id", "sets", "previous","weight","reps","completed_at","completed" )
+  VALUES ($1,$2,$3,$4,$5,$6,$7,$8);`;
 
   pool
     .query(QUERYTEXT, [
+      req.body.exercise_name,
       req.body.workout_id,
       req.body.sets,
       req.body.previous,
@@ -137,13 +138,14 @@ router.put("/workout_template/:id", (req, res) => {
 // Update reps/sets on user_exercise table.
 router.put("/user_exercise/:id", (req, res) => {
   const id = req.params.id;
+  const exerciseName= req.body.exercise_name;
   const weight = req.body.weight;
   const reps = req.body.reps;
   const QUERYTEXT = `UPDATE "user_exercise"
-  SET "weight" = $1, "reps" = $2
-  WHERE id = $3;`;
+  SET "exercise_name"= $1, "weight" = $2, "reps" = $3
+  WHERE id = $4;`;
   pool
-    .query(QUERYTEXT, [weight, reps, id])
+    .query(QUERYTEXT, [exerciseName,weight, reps, id])
     .then(() => {
       console.log("Updated weight and reps successfully");
       res.sendStatus(200);
