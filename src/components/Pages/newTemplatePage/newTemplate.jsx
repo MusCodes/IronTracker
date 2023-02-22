@@ -32,7 +32,7 @@ function TableWithInputs() {
             <th>Weight</th>
             <th>Reps</th>
             <th>Time</th>
-            <th>Completed</th>
+            <th>Completed!</th>
             
           </tr>
         </thead>
