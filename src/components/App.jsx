@@ -1,37 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   HashRouter as Router,
   Redirect,
   Route,
   Switch,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
-import Nav from './Shared/Nav/Nav';
-import Footer from './Shared/Footer/Footer';
+import Nav from "./Shared/Nav/Nav";
+import Footer from "./Shared/Footer/Footer";
 
-import ProtectedRoute from './Shared/ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from "./Shared/ProtectedRoute/ProtectedRoute";
 
-import AboutPage from './Pages/AboutPage/AboutPage';
-import UserPage from './Pages/UserPage/UserPage';
-import InfoPage from './Pages/InfoPage/InfoPage';
-import LandingPage from './Pages/LandingPage/LandingPage';
-import LoginPage from './Pages/LoginPage/LoginPage';
-import RegisterPage from './Pages/RegisterPage/RegisterPage';
+import AboutPage from "./Pages/AboutPage/AboutPage";
+import UserPage from "./Pages/UserPage/UserPage";
+import InfoPage from "./Pages/InfoPage/InfoPage";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 
-
-import './App.css';
-import NewTemplate from './Pages/newTemplatePage/newTemplate';
-import TableWithInputs from './Pages/newTemplatePage/newTemplate';
+import "./App.css";
+import NewTemplate from "./Pages/newTemplatePage/newTemplate";
+import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
+import Template from "./Pages/newTemplatePage/TemplateForm";
 
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: "FETCH_USER" });
   }, [dispatch]);
 
   return (
@@ -71,53 +71,46 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <Route
-            exact
-            path="/login"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/login">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect to the /user page
               <Redirect to="/user" />
-              :
+            ) : (
               // Otherwise, show the login page
               <LoginPage />
-            }
+            )}
           </Route>
 
-          <Route
-            exact
-            path="/registration"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/registration">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect them to the /user page
               <Redirect to="/user" />
-              :
+            ) : (
               // Otherwise, show the registration page
               <RegisterPage />
-            }
+            )}
           </Route>
 
-          <Route
-            exact
-            path="/home"
-          >
-            {user.id ?
-              // If the user is already logged in, 
+          <Route exact path="/home">
+            {user.id ? (
+              // If the user is already logged in,
               // redirect them to the /user page
               <Redirect to="/user" />
-              :
+            ) : (
               // Otherwise, show the Landing page
               <LandingPage />
-            }
+            )}
           </Route>
-
+          <ProtectedRoute path="/test/:template_id">
+            <TableWithInputs />
+          </ProtectedRoute>
+          <ProtectedRoute path="/template">
+            <Template />
+          </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
-            <Route path="/test">
-              <TableWithInputs/>
-            </Route>
             <h1>404</h1>
           </Route>
         </Switch>

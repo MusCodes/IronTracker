@@ -1,11 +1,16 @@
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 
 
 function TableWithInputs() {
   const [rows, setRows] = useState([
     { exercise_name: "", workout_id:"", sets: "", previous: "", weight: "", reps: "", completed_at: "" },
   ]);
+
+  const params= useParams();
+  const id= params.workout_id;
 
   function handleRowChange(event, rowIndex, fieldName) {
     const { value } = event.target;
@@ -47,7 +52,7 @@ function TableWithInputs() {
         <thead>
           <tr>
             <th>Exercise Name</th>
-            <th> WorkoutID</th>
+            {/* <th> WorkoutID</th> */}
             <th>SETS</th>
             <th>Previous</th>
             <th>Weight</th>
@@ -61,7 +66,7 @@ function TableWithInputs() {
           {rows.map((row, rowIndex) => (
             
             <tr key={rowIndex}>
-                {console.log("THIS IS ROW!!!!",row)}
+                
               <td>
                 <input
                   type="text"
@@ -70,14 +75,14 @@ function TableWithInputs() {
                   onChange={(event) => handleRowChange(event, rowIndex, "exercise_name")}
                 />
               </td>
-              <td>
-                <input
+              {/* <td> */}
+                {/* <input
                   type="number"
                   name="workout_id"
                   value={row.workout_id}
                   onChange={(event) => handleRowChange(event, rowIndex, "workout_id")}
                 />
-              </td>
+              </td> */}
               <td>
                 <input
                   type="text"

@@ -1,6 +1,9 @@
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 /**
 This is the get route for my user_exercise table.
@@ -20,7 +23,7 @@ router.get("/user_exercise", (req, res) => {
     });
 });
 // This is our get route for the workout template.
-router.get("/workout_template", (req, res) => {
+router.get("/workout_template",rejectUnauthenticated, (req, res) => {
   const QUERYTEXT = `SELECT * FROM "workouts";`;
   pool
     .query(QUERYTEXT)
@@ -32,6 +35,23 @@ router.get("/workout_template", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+// Specific Template
+// router.get("/workout_template/:id",rejectUnauthenticated, (req, res) => {
+//   const QUERYTEXT = `SELECT * FROM "workouts" WHERE id=$1;`;
+//   pool
+//     .query(QUERYTEXT, [req.params.id])
+//     .then((results) => {
+//       res.send(results.rows);
+//     })
+//     .catch((error) => {
+//       console.log("error in workout_template GET ROUTE line 29", error);
+//       res.sendStatus(500);
+//     });
+// });
+
+
+
 
 /**
  * POST route template
@@ -63,19 +83,21 @@ router.post("/user_exercise", (req, res) => {
 });
 
 //Workout Template Post Route.
-router.post("/workout_template", (req, res) => {
+router.post("/workout_template",rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const QUERYTEXT = `INSERT INTO "workouts" ("user_id", "template_name", "created_at")
-  VALUES ($1,$2,$3);`;
+  VALUES ($1,$2,$3) returning id ;`;
 
   pool
     .query(QUERYTEXT, [
-      req.body.user_id,
+      req.user.id,
       req.body.template_name,
-      req.body.created_at,
+      `now();`,
     ])
     .then((result) => {
+      res.status(201).send(result.rows[0])
       res.sendStatus(201);
+      
     })
     .catch((error) => {
       console.log("error with user_exercise POST line 54", error);
