@@ -103,7 +103,7 @@ function App() {
               <LandingPage />
             )}
           </Route>
-          <ProtectedRoute path="/test/:template_id">
+          <ProtectedRoute path="/test/:workout_id">
             <TableWithInputs />
           </ProtectedRoute>
           <ProtectedRoute path="/template">
