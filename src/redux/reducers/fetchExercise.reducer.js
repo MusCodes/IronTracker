@@ -7,3 +7,4 @@ const fetchExercise = (state=[], action) => {
     }
 }
 export default fetchExercise
+
