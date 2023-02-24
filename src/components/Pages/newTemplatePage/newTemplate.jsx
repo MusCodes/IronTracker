@@ -23,7 +23,7 @@ function TableWithInputs() {
     setRows((prevRows) => {
       const newRows = [...prevRows];
       newRows[rowIndex][fieldName] = value;
-      newRows[rowIndex].completed = false; // Add a new property to track completion
+      newRows[rowIndex].completed = false; 
       newRows[rowIndex].workout_id = id;
 
       return newRows;
@@ -66,6 +66,7 @@ function TableWithInputs() {
     <div className="Table">
       <table>
         <thead>
+          
           <tr>
             <th>Exercise Name</th>
             {/* <th> WorkoutID</th> */}
@@ -78,8 +79,10 @@ function TableWithInputs() {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+          {rows.map((row, rowIndex) => {
+            console.log(row);
+            
+             return <tr key={rowIndex}>
               <td>
                 <input
                   type="text"
@@ -152,7 +155,7 @@ function TableWithInputs() {
                 </td>
               </td>
             </tr>
-          ))}
+})}
         </tbody>
       </table>
       <button onClick={handleAddRow}>Add Set</button>
