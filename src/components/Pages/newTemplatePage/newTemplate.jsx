@@ -1,66 +1,65 @@
-import { useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 function TableWithInputs() {
   const [rows, setRows] = useState([
-    {
-      exercise_name: "",
-      sets: "",
-      previous: "",
-      weight: "",
-      reps: "",
-      completed_at: "",
-    },
-  ]);
+    
+  ])
 
-  const params = useParams();
-  const id = params.workout_id;
-  console.log("THIS IS ID", id);
+  const params = useParams()
+  const id = params.workout_id
+  console.log('THIS IS ID', id)
+
+  const exerciseData = useSelector((state) => state.fetchExercise)
+  console.log("this is exerciseDATA", exerciseData)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_EXERCISE' })
+  }, [])
 
   function handleRowChange(event, rowIndex, fieldName) {
-    const { value } = event.target;
+    const { value } = event.target
     setRows((prevRows) => {
-      const newRows = [...prevRows];
-      newRows[rowIndex][fieldName] = value;
-      newRows[rowIndex].completed = false; 
-      newRows[rowIndex].workout_id = id;
+      const newRows = [...prevRows]
+      newRows[rowIndex][fieldName] = value
+      newRows[rowIndex].completed = false
+      newRows[rowIndex].workout_id = id
 
-      return newRows;
-    });
+      return newRows
+    })
   }
 
-  //
   function sendDataToServer(data) {
     axios
-      .post("/api/workouts/user_exercise", data)
-
+      .post('/api/workouts/user_exercise', data)
       .then((response) => {
-        console.log("THIS IS DATA!", data);
-        console.log("THIS IS RESPONSe", response);
-        console.log("THIS IS RESPONSE.DATA !", response.data);
+        console.log('THIS IS DATA!', data)
+        console.log('THIS IS RESPONSE', response)
+        console.log('THIS IS RESPONSE.DATA !', response.data)
       })
       .catch((error) => {
-        console.log(error);
-      });
+        console.log(error)
+      })
   }
-
-  //
 
   function handleAddRow() {
-    setRows((prevRows) => [
-      ...prevRows,
-      {
-        exercise_name: "",
-        workout_id: "",
-        sets: "",
-        previous: "",
-        weight: "",
-        reps: "",
-        completed_at: "",
-      },
-    ]);
+    const newRow = {
+      exercise_name: '',
+      sets: '',
+      previous: '',
+      weight: '',
+      reps: '',
+      completed_at: ''
+    };
+  
+    setRows(prevRows => [...prevRows, newRow]);
   }
+  
+  
+  
 
   return (
     <div className="Table">
@@ -79,7 +78,7 @@ function TableWithInputs() {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, rowIndex) => {
+          {exerciseData.map((row, rowIndex) => {
             console.log(row);
             
              return <tr key={rowIndex}>
@@ -139,7 +138,7 @@ function TableWithInputs() {
               </td>
               <td>
                 <input
-                  type="time"
+                  type="integer"
                   name="time"
                   value={row.completed_at}
                   onChange={(event) =>

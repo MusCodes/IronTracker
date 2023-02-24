@@ -37,18 +37,18 @@ router.get("/workout_template",rejectUnauthenticated, (req, res) => {
 });
 
 // Specific Template
-// router.get("/workout_template/:id",rejectUnauthenticated, (req, res) => {
-//   const QUERYTEXT = `SELECT * FROM "workouts" WHERE id=$1;`;
-//   pool
-//     .query(QUERYTEXT, [req.params.id])
-//     .then((results) => {
-//       res.send(results.rows);
-//     })
-//     .catch((error) => {
-//       console.log("error in workout_template GET ROUTE line 29", error);
-//       res.sendStatus(500);
-//     });
-// });
+router.get("/workout_template/:id",rejectUnauthenticated, (req, res) => {
+  const QUERYTEXT = `SELECT * FROM "workouts" WHERE id=$1;`;
+  pool
+    .query(QUERYTEXT, [req.params.id])
+    .then((results) => {
+      res.send(results.rows);
+    })
+    .catch((error) => {
+      console.log("error in workout_template GET ROUTE line 29", error);
+      res.sendStatus(500);
+    });
+});
 
 
 
