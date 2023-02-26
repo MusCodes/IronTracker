@@ -17,18 +17,15 @@ function TableWithInputs() {
   );
   const dispatch = useDispatch();
 
-  const [dataTest,setDataTest] = useState([])
-  
+  const [dataTest, setDataTest] = useState([]);
+
   useEffect(() => {
     dispatch({ type: "FETCH_EXERCISE" });
   }, []);
 
-
   useEffect(() => {
-
-    setDataTest(FilterexerciseData)
+    setDataTest(FilterexerciseData);
   }, [exerciseData]);
-
 
   function handleRowChange(event, rowIndex, fieldName) {
     const { value } = event.target;
@@ -47,27 +44,28 @@ function TableWithInputs() {
     //       workout_id: id,
     //     };
     //   }
-       FilterexerciseData[rowIndex][fieldName] = value;
+    FilterexerciseData[rowIndex][fieldName] = value;
     //   newRows[rowIndex].completed = false;
     //   newRows[rowIndex].workout_id = id;
 
-      setDataTest(FilterexerciseData)
-      //return newRows;
-  
-    
+    setDataTest(FilterexerciseData);
+    //return newRows;
   }
 
-  
+  function handleDeleteRow(id){
+    dispatch({
+      type:`DELETE_EXERCISE`,
+      payload:Number(id),
+    })
+  }
 
-function sendDataToServer(rowIndex) {
-  
-  const rowData = FilterexerciseData[rowIndex];
-  dispatch({
-    type: 'ADD_EXERCISE_REQUEST',
-    payload: rowData
-  });
-}
-
+  function sendDataToServer(rowIndex) {
+    const rowData = FilterexerciseData[rowIndex];
+    dispatch({
+      type: "ADD_EXERCISE_REQUEST",
+      payload: rowData,
+    });
+  }
 
   function handleAddRow() {
     const newRow = {
@@ -96,6 +94,7 @@ function sendDataToServer(rowIndex) {
             <th>Reps</th>
             <th>Time</th>
             <th>Completed</th>
+            <th>Delete </th>
           </tr>
         </thead>
         <tbody>
@@ -119,10 +118,9 @@ function sendDataToServer(rowIndex) {
                     name="sets"
                     value={row.sets}
                     onChange={(event) => {
-                      console.log(event.target)
-                      handleRowChange(event, rowIndex, "sets")
-                    }
-                    }
+                      console.log(event.target);
+                      handleRowChange(event, rowIndex, "sets");
+                    }}
                   />
                 </td>
                 <td>
@@ -130,10 +128,10 @@ function sendDataToServer(rowIndex) {
                     type="text"
                     name="previous"
                     value={row.previous}
-                    onChange={(event) =>{
-                      handleRowChange(event,rowIndex,"previous")
+                    onChange={(event) => {
+                      handleRowChange(event, rowIndex, "previous");
                     }}
-              
+
                     //}
                   />
                 </td>
@@ -172,7 +170,18 @@ function sendDataToServer(rowIndex) {
                     <button onClick={() => sendDataToServer(rowIndex)}>
                       Complete!
                     </button>
+                    
                   </td>
+                
+                </td>
+                <td>
+                  <td>
+                    <button onClick={(() => handleDeleteRow(row.id))}>
+                      Delete
+                    </button>
+                    
+                  </td>
+                
                 </td>
               </tr>
             );

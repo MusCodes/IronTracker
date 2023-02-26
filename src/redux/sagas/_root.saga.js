@@ -5,6 +5,8 @@ import userSaga from './user.saga';
 import TemplateSaga from './template.saga';
 import fetchExerciseDataSaga from './fetchExercise.saga';
 import watchAddExercise from './addExercise.saga';
+import watchDeleteExercise from './deleteExercise.saga.js';
+
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,6 +23,8 @@ export default function* rootSaga() {
     TemplateSaga(),
     fetchExerciseDataSaga(),
     watchAddExercise(),
+    watchDeleteExercise(),
+    
     
   ]);
 }
