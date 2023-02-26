@@ -109,10 +109,10 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/template">
             <Template />
-          </ProtectedRoute>
-          <ProtectedRoute path="/workout">
             <WorkoutTemplate />
           </ProtectedRoute>
+          {/* <ProtectedRoute path="/workout"> */}
+          {/* </ProtectedRoute> */}
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

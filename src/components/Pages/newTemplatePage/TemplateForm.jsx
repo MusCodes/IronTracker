@@ -20,3 +20,4 @@ dispatch ({type: "SUBMIT_TEMPLATE",payload:{name,history}} )
 }
 
 export default Template;
+
