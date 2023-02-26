@@ -24,6 +24,7 @@ import "./App.css";
 import NewTemplate from "./Pages/newTemplatePage/newTemplate";
 import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
 import Template from "./Pages/newTemplatePage/TemplateForm";
+import WorkoutTemplate from "./Pages/newTemplatePage/templateworkout";
 
 function App() {
   const dispatch = useDispatch();
@@ -108,6 +109,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/template">
             <Template />
+          </ProtectedRoute>
+          <ProtectedRoute path="/workout">
+            <WorkoutTemplate />
           </ProtectedRoute>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

@@ -6,6 +6,7 @@ import TemplateSaga from './template.saga';
 import fetchExerciseDataSaga from './fetchExercise.saga';
 import watchAddExercise from './addExercise.saga';
 import watchDeleteExercise from './deleteExercise.saga.js';
+import fetchTemplateSaga from './fetchTemplate.saga';
 
 
 // rootSaga is the primary saga.
@@ -24,6 +25,7 @@ export default function* rootSaga() {
     fetchExerciseDataSaga(),
     watchAddExercise(),
     watchDeleteExercise(),
+    fetchTemplateSaga(),
     
     
   ]);
