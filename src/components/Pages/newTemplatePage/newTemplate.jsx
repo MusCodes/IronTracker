@@ -57,15 +57,17 @@ function TableWithInputs() {
     
   }
 
-  function sendDataToServer(rowIndex) {
-    dispatch({
-      type: "ADD_EXERCISE_REQUEST",
-      payload: {
-        exercise_name: rows[rowIndex].exercise_name,
-        workout_id: id,
-      },
-    });
-  }
+  
+
+function sendDataToServer(rowIndex) {
+  
+  const rowData = FilterexerciseData[rowIndex];
+  dispatch({
+    type: 'ADD_EXERCISE_REQUEST',
+    payload: rowData
+  });
+}
+
 
   function handleAddRow() {
     const newRow = {
