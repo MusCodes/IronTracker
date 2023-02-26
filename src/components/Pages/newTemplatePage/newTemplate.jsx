@@ -17,36 +17,54 @@ function TableWithInputs() {
   );
   const dispatch = useDispatch();
 
+  const [dataTest,setDataTest] = useState([])
+  
   useEffect(() => {
     dispatch({ type: "FETCH_EXERCISE" });
   }, []);
 
+
+  useEffect(() => {
+
+    setDataTest(FilterexerciseData)
+  }, [exerciseData]);
+
+
   function handleRowChange(event, rowIndex, fieldName) {
     const { value } = event.target;
-    setRows((prevRows) => {
-      const newRows = [...prevRows];
-      console.log("THIS IS ROWINDEX",rowIndex);
-      console.log("THIS IS FIELDNAME",fieldName);
-      console.log("THIS IS NEWROWS",newRows);
-      newRows[rowIndex][fieldName] = value;
-      newRows[rowIndex].completed = false;
-      newRows[rowIndex].workout_id = id;
+    // setRows((prevRows) => {
+    //   const newRows = [...prevRows];
+    //   if (!newRows[rowIndex]) {
+    //     newRows[rowIndex] = {
+    //       exercise_name: "",
+    //       sets: "",
+    //       previous: "",
+    //       weight: 0,
+    //       reps: 0,
+    //       completed_at: 0,
+    //       completed: false,
 
-      return newRows;
-    });
+    //       workout_id: id,
+    //     };
+    //   }
+       FilterexerciseData[rowIndex][fieldName] = value;
+    //   newRows[rowIndex].completed = false;
+    //   newRows[rowIndex].workout_id = id;
+
+      setDataTest(FilterexerciseData)
+      //return newRows;
+  
+    
   }
 
-  function sendDataToServer(data) {
-    axios
-      .post("/api/workouts/user_exercise", data)
-      .then((response) => {
-        console.log("THIS IS DATA!", data);
-        console.log("THIS IS RESPONSE", response);
-        console.log("THIS IS RESPONSE.DATA !", response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  function sendDataToServer(rowIndex) {
+    dispatch({
+      type: "ADD_EXERCISE_REQUEST",
+      payload: {
+        exercise_name: rows[rowIndex].exercise_name,
+        workout_id: id,
+      },
+    });
   }
 
   function handleAddRow() {
@@ -58,11 +76,11 @@ function TableWithInputs() {
       reps: 0,
       completed_at: 0,
       completed: false,
-      workout_id: Number(id)
+      workout_id: Number(id),
     };
     dispatch({ type: "ADD_ROW", payload: newRow });
   }
-  
+
   return (
     <div className="Table">
       <table>
@@ -75,13 +93,12 @@ function TableWithInputs() {
             <th>Weight</th>
             <th>Reps</th>
             <th>Time</th>
-            <th>Completed!</th>
+            <th>Completed</th>
           </tr>
         </thead>
         <tbody>
-          {FilterexerciseData.map((row, rowIndex) => {
+          {dataTest.map((row, rowIndex) => {
             console.log(row);
-
             return (
               <tr key={rowIndex}>
                 <td>
@@ -94,21 +111,15 @@ function TableWithInputs() {
                     }
                   />
                 </td>
-                {/* <td> */}
-                {/* <input
-                  type="number"
-                  name="workout_id"
-                  value={row.workout_id}
-                  onChange={(event) => handleRowChange(event, rowIndex, "workout_id")}
-                />
-              </td> */}
                 <td>
                   <input
                     type="text"
                     name="sets"
                     value={row.sets}
-                    onChange={(event) =>
+                    onChange={(event) => {
+                      console.log(event.target)
                       handleRowChange(event, rowIndex, "sets")
+                    }
                     }
                   />
                 </td>
@@ -117,9 +128,11 @@ function TableWithInputs() {
                     type="text"
                     name="previous"
                     value={row.previous}
-                    onChange={(event) =>
-                      handleRowChange(event, rowIndex, "previous")
-                    }
+                    onChange={(event) =>{
+                      handleRowChange(event,rowIndex,"previous")
+                    }}
+              
+                    //}
                   />
                 </td>
                 <td>
@@ -154,8 +167,8 @@ function TableWithInputs() {
                 </td>
                 <td>
                   <td>
-                    <button onClick={() => sendDataToServer(rows[rowIndex])}>
-                      Complete
+                    <button onClick={() => sendDataToServer(rowIndex)}>
+                      Complete!
                     </button>
                   </td>
                 </td>
