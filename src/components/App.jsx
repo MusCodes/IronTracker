@@ -8,6 +8,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 
+
 import Nav from "./Shared/Nav/Nav";
 import Footer from "./Shared/Footer/Footer";
 
@@ -19,6 +20,8 @@ import InfoPage from "./Pages/InfoPage/InfoPage";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import HowToPage from "./Pages/newTemplatePage/How";
+
 
 import "./App.css";
 import NewTemplate from "./Pages/newTemplatePage/newTemplate";
@@ -110,6 +113,11 @@ function App() {
           <ProtectedRoute path="/template">
             <Template />
             <WorkoutTemplate />
+          </ProtectedRoute>
+          <ProtectedRoute path="/howTo">
+            <HowToPage/>
+            
+          
           </ProtectedRoute>
           {/* <ProtectedRoute path="/workout"> */}
           {/* </ProtectedRoute> */}
