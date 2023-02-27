@@ -43,7 +43,7 @@ function HowToPage() {
   return (
     <div>
       <form onSubmit={handleSearch}>
-        <label htmlFor="search">Search for an exercise:</label>
+        <label htmlFor="search">Search BodyPart:</label>
         <input type="text" id="search" name="search" />
         <button type="submit">Search</button>
       </form>

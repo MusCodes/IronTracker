@@ -17,7 +17,7 @@ function WorkoutTemplate() {
 
   useEffect(() => {
     dispatch({ type: `UPDATE_TEMPLATE` });
-  }, [workout]);
+  }, []);
 
 
   function onSubmit(id) {
@@ -37,6 +37,7 @@ function WorkoutTemplate() {
 
   return (
     <>
+    <h1>Previous Templates</h1>
         {console.log("THIS IS WORKOUTS!!!!!!!",workout)}
       {workout==null? '' :workout.map((workout, index) => {
         
