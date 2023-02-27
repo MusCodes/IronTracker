@@ -89,10 +89,10 @@ function TableWithInputs() {
             <th>Exercise Name</th>
             {/* <th> WorkoutID</th> */}
             <th>SETS</th>
-            <th>Previous</th>
+           {/* <th>Previous</th> */}
             <th>Weight</th>
             <th>Reps</th>
-            <th>Time</th>
+            {/* <th>Time</th> */}
             <th>Completed</th>
             <th>Delete </th>
           </tr>
@@ -123,7 +123,7 @@ function TableWithInputs() {
                     }}
                   />
                 </td>
-                <td>
+                {/* <td>
                   <input
                     type="text"
                     name="previous"
@@ -134,7 +134,7 @@ function TableWithInputs() {
 
                     //}
                   />
-                </td>
+                </td> */}
                 <td>
                   <input
                     type="number"
@@ -155,7 +155,7 @@ function TableWithInputs() {
                     }
                   />
                 </td>
-                <td>
+                {/* <td>
                   <input
                     type="integer"
                     name="time"
@@ -164,7 +164,7 @@ function TableWithInputs() {
                       handleRowChange(event, rowIndex, "completed_at")
                     }
                   />
-                </td>
+                </td> */}
                 <td>
                   <td>
                     <button onClick={() => sendDataToServer(rowIndex)}>
