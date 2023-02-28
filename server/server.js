@@ -10,6 +10,10 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const workoutRouter= require('./routes/template.router')
+const workoutRouterV2= require(`./routes/template.v2.router`)
+const exercisesRouter= require(`./routes/exercises.router`)
+const workoutsRouter= require(`./routes/workouts.router`)
+const workoutLogRouter= require(`./routes/workout_logs.router`)
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,7 +28,12 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use(`/api/workouts`, workoutRouter)
+app.use(`/api/workouts`, workoutRouter); // deprecated
+app.use(`/api/templates`,workoutRouterV2);
+app.use(`/api/workout_logs`,workoutsRouter); // could rename to just /api/workout
+app.use(`/api/exercises`,exercisesRouter);
+app.use(`/api/logs`,workoutLogRouter)
+
 
 // Serve static files
 app.use(express.static('build'));
