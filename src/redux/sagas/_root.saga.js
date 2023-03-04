@@ -5,12 +5,16 @@ import userSaga from './user.saga';
 import TemplateSaga from './template.saga';
 import fetchExerciseDataSaga from './fetchExercise.saga';
 import watchAddExercise from './addExercise.saga';
-import watchDeleteExercise from './deleteExercise.saga.js';
+
 import fetchTemplateSaga from './fetchTemplate.saga';
-import updateTemplateSaga from './UpdateTemplateName.saga';
-
-
-
+import templateSaga from './UpdateTemplateName.saga';
+import viewTemplateSaga from './refactorTemplate.saga';
+import addExerciseSaga from './exercise.saga';
+import watchDeleteExercise from './refactorDeleteExercise.saga';
+import watchDeleteExerciseRow from './deleteExercise.saga';
+import fetchLogSaga from './workout_log.saga';
+import WorkoutLogSaga from './fetchWorkout_log.saga';
+import fetchTimeSaga from './workoutTime.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -26,10 +30,16 @@ export default function* rootSaga() {
     TemplateSaga(),
     fetchExerciseDataSaga(),
     watchAddExercise(),
-    watchDeleteExercise(),
+   fetchLogSaga(),
     fetchTemplateSaga(),
-    updateTemplateSaga(),
     
+    viewTemplateSaga(),
+    addExerciseSaga(),
+    watchDeleteExercise(),
+    WorkoutLogSaga(),
+    fetchTimeSaga(),
+    templateSaga(),
+    watchDeleteExerciseRow(),
     
   ]);
 }

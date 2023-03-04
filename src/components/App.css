@@ -136,3 +136,119 @@ input {
 }
 
 
+
+/* EXERCISE TEMPLATE TABLE, MOVE TO ITS OWN FILE ONCE DONE WITH FUNCTIONALITY */
+.ExerciseTemplateContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+}
+
+.ExerciseTemplate {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px;
+  flex: 1 1 300px; 
+}
+
+/* FOR NEW TEMPLATE REMOVE LATER */
+.template-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.template-input {
+  width: 200px;
+  margin-right: 10px;
+}
+
+
+/* dsdsdsd */
+.newtemplate {
+  margin-bottom: 2rem;
+}
+
+.template-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30rem;
+  height: 15rem;
+  background-color: #f5f5f5;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+}
+
+.template-input {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 20rem;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  border: 1px solid #ccc;
+}
+
+.template-card-front,
+.template-card-back {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease;
+}
+
+.template-card-front {
+  z-index: 2;
+}
+
+.template-card-back {
+  transform: rotateY(180deg);
+}
+
+.template-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.template-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.exercise-count {
+  margin-bottom: 1rem;
+}
+
+.edit-template-button,
+.view-template-button {
+  margin-right: 1rem;
+}
+
+.exercises-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.exercises-list {
+  margin-bottom: 1rem;
+}
+
+.template-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,18 +1,19 @@
+import { put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
-import {put,takeLatest} from "redux-saga/effects"
 
-
-function* updateTemplate(action){
-    try {
-        const response= yield axios.put(`/api/workouts/workout_template/${action.payload.id}`,{template_name:action.payload.template_name});
-        console.log("this is response",response);
-        yield put({type: `SECOND_TEMPLATE`,payload: action.payload});
-    } catch(error){
-        console.log("ERROR IN UPDATE TEMPLATE SAGA", error)
-    }
-  
-    }  function* updateTemplateSaga(){
-        yield takeLatest("UPDATE_TEMPLATE", updateTemplate)
+function* editTemplateName(action) {
+  try {
+    const { id, name } = action.payload;
+    yield axios.put(`/api/templates/`, { id, name });
+    yield put({ type: "EDIT_TEMPLATE_NAME_SUCCESS", payload: { id, name }  });
+  } catch (error) {
+    console.log("Error in updating Workout Template line 122", error);
+    yield put({ type: "EDIT_TEMPLATE_NAME_ERROR" });
+  }
 }
 
-export default updateTemplateSaga;
+function* templateSaga() {
+  yield takeLatest("EDIT_TEMPLATE_NAME", editTemplateName);
+}
+
+export default templateSaga;

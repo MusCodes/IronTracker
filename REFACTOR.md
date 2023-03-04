@@ -36,21 +36,21 @@
 
 ## Routes
    /templates
-      - GET / to view all templates
-      - GET /:id to view a specific template (show workouts and exercises)
-      - POST / to create templates
-      - PUT /:id to update templates
-      - DELETE /:id to delete template
+      - [x]GET / to view all templates
+      -[x] GET /:id to view a specific template (show workouts and exercises)
+      - [?]POST / to create templates
+      -[x] PUT /:id to update templates
+      - [x]DELETE /:id to delete template
 
    /exercises
-      - POST / to add an exercise to a template by id (in body)
-      - DELETE /:id to delete an exercise
-      - PUT /:id to update (stretch)
-      - GET / to get all exercises
-      - GET /:template_id to get all exercises by template id
+      - [x]POST / to add an exercise to a template by id (in body)
+      - [x]DELETE /:id to delete an exercise
+      -[x] PUT /:id to update (stretch)
+      - [x]GET / to get all exercises
+      -[x] GET /:template_id to get all exercises by template id
    
    /workouts
-      - POST / to create a new workout (current time), needs a template_id to 
+      - [x]POST / to create a new workout (current time), needs a template_id to 
          attach the workout to. The user will need to create each exercise
          via the view as they complete them
 
@@ -106,3 +106,25 @@
       - Templates (Create, Read, Update, Delete)
       - Exercises (Create, Delete)
       - Workouts (Create, Read, Delete, Adding workout logs)
+
+What's left:
+   - When a new workout is created from a template, make a new log entry for each exercise
+      but set it all to defaults (0 reps, 0 weight, whatever). (COME BACK TO THIS) 
+   - THEN when we look at a workout, we're actually looking at a workout log table
+      for logs that already exist. So we can add new logs, edit existing, delete them, etc.
+
+   1. When 'Start Workout' is hit, do a POST to create a workout and grab that workout's ID
+      (do a RETURNING * and res.send(result.rows[0])), then push the user to the URL based on that
+      When creating this, also create one log for every exercise in the template, ready to go
+   2. When showing the workout, we'll actually just list the existing logs. Now all actions
+      are based on that workout:
+         Row updates are just a PUT
+         Row deletes delete the workout log
+         New row is actually 'new log' and its just a drop-down to pick which exercise from
+         the template you're using
+   3. May want to get back the exercise logs from the workout's GET query like we do with exercise
+
+Summary:
+   - The workout page should use the workout id, and the table should be based on workout logs
+      Adding a new row is just adding a new workout log, and put/delete are just updating/removing
+      workout logs for a given workout that already exist

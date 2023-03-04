@@ -24,10 +24,13 @@ import HowToPage from "./Pages/newTemplatePage/How";
 
 
 import "./App.css";
+import WorkoutLog from "./Pages/Refactor/workout_log";
 import NewTemplate from "./Pages/newTemplatePage/newTemplate";
 import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
 import Template from "./Pages/newTemplatePage/TemplateForm";
 import WorkoutTemplate from "./Pages/newTemplatePage/templateworkout";
+import ViewExerciseTemplate from "./Pages/Refactor/template";
+import Exercises from "./Pages/Refactor/exercises";
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +67,7 @@ function App() {
             exact
             path="/user"
           >
+            
             <UserPage />
           </ProtectedRoute>
 
@@ -119,6 +123,24 @@ function App() {
             
           
           </ProtectedRoute>
+          <ProtectedRoute path="/test">
+            <ViewExerciseTemplate/>
+            
+          
+          </ProtectedRoute>
+
+          
+          <ProtectedRoute path="/exercises/:id">
+            <Exercises/>
+            
+          
+          </ProtectedRoute>
+          <ProtectedRoute path="/workouts/:id">
+            <WorkoutLog/>
+            
+          
+          </ProtectedRoute>
+          
           {/* <ProtectedRoute path="/workout"> */}
           {/* </ProtectedRoute> */}
           {/* If none of the other routes matched, we will show a 404. */}

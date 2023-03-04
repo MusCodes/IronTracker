@@ -28,9 +28,9 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use(`/api/workouts`, workoutRouter); // deprecated
+// app.use(`/api/workouts`, workoutRouter); // deprecated
 app.use(`/api/templates`,workoutRouterV2);
-app.use(`/api/workout_logs`,workoutsRouter); // could rename to just /api/workout
+app.use(`/api/workout_time`,workoutsRouter); // could rename to just /api/workout
 app.use(`/api/exercises`,exercisesRouter);
 app.use(`/api/logs`,workoutLogRouter)
 
