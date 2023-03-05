@@ -35,27 +35,22 @@ function workoutRow({ workoutExercise, templateExercise }) {
   console.log('building a row');
 
   return (
-    <tr
-      // style={
-      //   completedRows.includes(rowIndex) ? { backgroundColor: "green" } : null
-      // }
-    >
-      <td>
-        {templateExercise?.name}
-      </td>
+    <tr className="WorkoutRow">
+      <td className="ExerciseName">{templateExercise?.name}</td>
       <td>
         <input
           type="text"
           name="sets"
+          className="InputField"
           value={workoutInfo.sets}
           onChange={(event) => handleRowChange(event, "sets")}
         />
       </td>
-
       <td>
         <input
           type="number"
           name="weight"
+          className="InputField"
           value={workoutInfo.weight}
           onChange={(event) => handleRowChange(event, "weight")}
         />
@@ -64,27 +59,23 @@ function workoutRow({ workoutExercise, templateExercise }) {
         <input
           type="number"
           name="reps"
+          className="InputField"
           value={workoutInfo.reps}
           onChange={(event) => handleRowChange(event, "reps")}
         />
       </td>
-
       <td>
-        <td>
-          <button
-            onClick={updateWorkoutExercise}
-          >
-            Save!
-          </button>
-        </td>
+        <button className="SaveButton" onClick={updateWorkoutExercise}>
+          Save!
+        </button>
       </td>
       <td>
-        <td>
-          <button onClick={deleteExercise}>delete</button>
-        </td>
+        <button className="DeleteButton" onClick={deleteExercise}>
+          delete
+        </button>
       </td>
     </tr>
   );
-}
+  }  
 
 export default workoutRow;

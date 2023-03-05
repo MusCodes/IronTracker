@@ -29,38 +29,43 @@ function WorkoutLog() {
   const thisWorkout = allWorkouts.find(
     (workout) => Number(workout.id) === Number(workoutId)
   );
-
   let relatedWorkouts = allWorkouts.filter(
     (workout) => (Number(workout.template_id) === Number(thisWorkout.template_id)) && (workout.workout_exercises.length > 0)
-  );
-
-  console.log(`this workout:`, thisWorkout);
-
-  function historicalLogs() {
-    let history = [];
-    for (let i = 0; i < relatedWorkouts.length; i++) {
-      if (i > 3) {
-        break
-      };
-
-      const thisRelatedWorkout = relatedWorkouts[i];
-      // loop over the workout logs, and for each one simply make some jsx
-      // BUT we'll have to look up the log exercise's name in relatedWorkouts[i].exercises
-
-      const items = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
-        const templateExercise = thisRelatedWorkout.exercises.find(
-          (exercise) => Number(exercise.id) === Number(thisExercise.exercise_id)
-        );
+    );
+    
+    console.log(`this workout:`, thisWorkout);
+    
+    function historicalLogs() {
+      let history = [];
+      for (let i = 0; i < relatedWorkouts.length; i++) {
+        if (i > 3) {
+          break
+        };
+        
+        const thisRelatedWorkout = relatedWorkouts[i];
+        // loop over the workout logs, and for each one simply make some jsx
+        // BUT we'll have to look up the log exercise's name in relatedWorkouts[i].exercises
+        
+        //weewoaipeowiepqowiepqwo
+        const items = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
+          const templateExercise = thisRelatedWorkout.exercises.find(
+            (exercise) => Number(exercise.id) === Number(thisExercise.exercise_id)
+            );
+            console.log("this is templateExercise",templateExercise);
+            console.log("this is thisExercise",thisExercise);
+            console.log("thisRelatedWorkout",thisRelatedWorkout);
+            
 
         return (
             <td>{templateExercise.name} {thisExercise.reps} reps,
             {thisExercise.weight} lb, {thisExercise.sets} sets
             </td>
+            //<p></p>
         );
       });
 
       history.push(
-        <table>
+        <table className="workoutLog">
           <thead>
             <tr>
               <td>Date</td>
@@ -78,30 +83,31 @@ function WorkoutLog() {
     } // end for
     return history;
   }
+  
+  
 
   return (
-    <div className="Table">
+    <div className="WorkoutLog">
       {thisWorkout && (
         <>
           <WorkoutExerciseForm workout={thisWorkout} />
-          {historicalLogs()}
           {/* Previous Workouts from the same template? */}
           {/* 
             - Grab the most recent X workouts with the same template id (sorted reverse order by created_at)
             - Show each of the workout logs by exercise name:
-              June 10 2022:
-                Leg Press: 10 reps @ 100lb (2 sets)
-                Leg Curl: 5 reps @ 100lb (3 sets)
-
-              June 12 2022:
-                etc.
-              
+            June 10 2022:
+            Leg Press: 10 reps @ 100lb (2 sets)
+            Leg Curl: 5 reps @ 100lb (3 sets)
+            
+            June 12 2022:
+            etc.
+            
             - Strech Goal: Process the workout logs so that you can group all exercises together
             by the same type:
             
-
+            
             Leg Press  June 10: 10 reps   90lb   2 sets
-                       June 15: 10 reps   100lb  2 sets
+            June 15: 10 reps   100lb  2 sets
             Leg Curl ...
           */}
           <table>
@@ -124,24 +130,28 @@ function WorkoutLog() {
                   // grab the current exercise from thisWorkout.exercises
                   const templateExercise = thisWorkout.exercises.find(
                     (exercise) =>
-                      Number(exercise.id) ===
-                      Number(workout_exercise.exercise_id)
-                  );
-                  return (
-                    <WorkoutRow
+                    Number(exercise.id) ===
+                    Number(workout_exercise.exercise_id)
+                    );
+                    return (
+                      <WorkoutRow
                       workoutExercise={workout_exercise}
                       templateExercise={templateExercise}
-                    />
-                  );
-                }
-              )}
+                      />
+                      );
+                    }
+                    )}
             </tbody>
           </table>
+                    <header>Past History</header>
+                     {historicalLogs()}
           {/* <button onClick={handleAddRow}>Add Set</button> */}
+          
 
           <button onClick={() => history.push("/test")}>
             Complete Workout
           </button>
+          
         </>
       )}
     </div>
