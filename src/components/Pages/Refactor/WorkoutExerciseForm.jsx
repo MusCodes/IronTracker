@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+
 function WorkoutExerciseForm({ workout }) {
   const dispatch = useDispatch();
 
@@ -26,6 +27,7 @@ function WorkoutExerciseForm({ workout }) {
   };
 
   return  (
+    <>
     <div className="ExerciseForm">
       <label className="FormLabel">Exercise:</label>
       <select
@@ -81,6 +83,8 @@ function WorkoutExerciseForm({ workout }) {
         Add Workout Log
       </button>
     </div>
+    </>
+    
   );
   
 }

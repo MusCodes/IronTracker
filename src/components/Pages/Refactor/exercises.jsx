@@ -2,7 +2,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
-import { Button } from 'react-bootstrap';
+import { Button,Card } from 'react-bootstrap';
 
 
 //WORKING
@@ -77,8 +77,10 @@ function Exercises() {
   }
   return (
     <>
-    <div className="red">
-      <h1>Current Template: {filteredTemplate.name}</h1>
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+  <Card className="card-pop" style={{ width: "24rem" }}>
+    <Card.Body>
+      <Card.Title>Current Template: {filteredTemplate.name}</Card.Title>
       <div className="input-group mb-3">
         <input
           value={name}
@@ -87,22 +89,38 @@ function Exercises() {
           className="form-control"
           placeholder="Exercise"
         />
-        <Button variant="primary" onClick={() => handleStartWorkout(id)}>Start Workout</Button>
-        <Button variant="success" onClick={addExercise}>Add</Button>
+        <Button
+          variant="primary"
+          onClick={() => handleStartWorkout(id)}
+        >
+          Start Workout
+        </Button>
+        <Button variant="success" onClick={addExercise}>
+          Add
+        </Button>
       </div>
       <section>
         <h2>Current Exercises:</h2>
         <ul className="list-group">
           {filteredTemplate.exercises.map((exerciseObj, index) => (
-            <li className="list-group-item d-flex justify-content-between align-items-center" key={index}>
+            <li
+              className="list-group-item d-flex justify-content-between align-items-center"
+              key={index}
+            >
               {exerciseObj.name}
-              <button className="btn btn-danger" onClick={() => deleteExercise(exerciseObj.id)}>Delete</button>
-             
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteExercise(exerciseObj.id)}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
       </section>
-      </div>
+    </Card.Body>
+  </Card>
+</div>
     </>
   );
 }

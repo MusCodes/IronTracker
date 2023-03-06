@@ -31,43 +31,45 @@ function WorkoutLog() {
   }, []);
 console.log("allWorkouts",allWorkouts);
   
-  const thisWorkout = allWorkouts.find(
-    (workout) => Number(workout.id) === Number(workoutId)
-  );
-  console.log("thisWorkout", thisWorkout)
-  console.log("allRelatedWorkouts", relatedWorkouts);
-  let relatedWorkouts = [];
-  if(thisWorkout){
-      let relatedWorkouts = allWorkouts.filter(
-    (workout) => (Number(workout.template_id) === Number(thisWorkout.template_id)) && (workout.workout_exercises.length > 0)
-    );
-  }
+const thisWorkout = allWorkouts.find(
+  (workout) => Number(workout.id) === Number(workoutId)
+);
 
-    
-    console.log(`this workout:`, thisWorkout);
-    function historicalLogs() {
-      let history = [];
-    
-      history.push(
-        <table className="workoutLog">
-          <thead>
-            <tr>
-              <th>Exercise Name</th>
-              <th>Sets</th>
-              <th>Previous</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody className="logTbody" >
+if (!thisWorkout) {
+  return <h1>Loading...</h1>; // or some other loading state
+}
+
+const relatedWorkouts = allWorkouts.filter(
+  (workout) => (Number(workout.template_id) === Number(thisWorkout.template_id)) && (workout.workout_exercises.length > 0)
+);
+  
+console.log(`this workout:`, thisWorkout);
+
+function historicalLogs() {
+  let history = [];
+
+  history.push(
+    <table className="workoutLog1">
+      <thead>
+        <tr>
+          <th>Exercise Name</th>
+          <th>Sets</th>
+          <th>Previous</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody className="logTbody">
             {relatedWorkouts.map((thisRelatedWorkout) => {
               // loop over the workout logs, and for each one create a row in the table
               const rows = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
                 const templateExercise = thisRelatedWorkout.exercises.find(
                   (exercise) => exercise.id === thisExercise.exercise_id
                 );
+                console.log("thisExercise.set",thisExercise.sets);
     
                 return (
                   <tr key={thisExercise.id}>
+                    
                     <td>{templateExercise.name}</td>
                     <td>{thisExercise.sets}</td>
                     <td>{thisExercise.weight} x {thisExercise.reps}</td>
@@ -96,6 +98,11 @@ console.log("allWorkouts",allWorkouts);
     <div className="WorkoutLog">
       {thisWorkout && (
         <>
+        <div className="WorkoutLog-history">
+                    <header>Past History</header>
+                    {historicalLogs()}
+                </div>
+
           <WorkoutExerciseForm workout={thisWorkout} />
           {/* Previous Workouts from the same template? */}
           {/* 
@@ -116,8 +123,8 @@ console.log("allWorkouts",allWorkouts);
             June 15: 10 reps   100lb  2 sets
             Leg Curl ...
           */}
-          <table className="logTable">
-            <thead>
+          <table className="logTable1">
+            <thead className="logForm">
               <tr>
                 <th>Exercise Name</th>
                 {/* <th> WorkoutID</th> */}
@@ -126,7 +133,7 @@ console.log("allWorkouts",allWorkouts);
                 <th>Weight</th>
                 <th>Reps</th>
                 {/* <th>Time</th> */}
-                <th>Completed</th>
+                <th>Finish</th>
                 <th>Delete </th>
               </tr>
             </thead>
@@ -149,8 +156,7 @@ console.log("allWorkouts",allWorkouts);
                     )}
             </tbody>
           </table>
-                    <header>Past History</header>
-                     {historicalLogs()}
+          
           {/* <button onClick={handleAddRow}>Add Set</button> */}
           
 

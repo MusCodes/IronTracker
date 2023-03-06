@@ -65,15 +65,16 @@ function workoutRow({ workoutExercise, templateExercise }) {
         />
       </td>
       <td>
-        <button className="SaveButton" onClick={updateWorkoutExercise}>
-          Save!
-        </button>
-      </td>
-      <td>
-        <button className="DeleteButton" onClick={deleteExercise}>
-          delete
-        </button>
-      </td>
+  <button className="btn btn-success btn-sm" onClick={updateWorkoutExercise}>
+    <i className="bi bi-save"></i>
+  </button>
+</td>
+<td>
+  <button className="btn btn-danger btn-sm " onClick={deleteExercise}>
+    <i className="bi bi-trash"></i>
+  </button>
+</td>
+
     </tr>
   );
   }  
