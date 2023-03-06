@@ -1,3 +1,4 @@
+import { Card, Button } from 'react-bootstrap';
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -15,7 +16,7 @@ function ViewExerciseTemplate() {
   console.log("this is workout time", workoutTime);
   useEffect(() => {
     dispatch({ type: "GET_EXERCISE_TABLE" });
-  }, []);
+  }, [template]);
   //
   useEffect(() => {
     if (log.length === 0) {
@@ -35,7 +36,6 @@ function ViewExerciseTemplate() {
     }
   }, []);
   function displayTime(id) {
-    // workoutTime.filter((obj) => {Number(obj.template_id)===Number(id)})
     let x = workoutTime.find((obj) => Number(obj.template_id) === Number(id));
     console.log("THIS IS X", x);
     if (!x) {
@@ -45,27 +45,15 @@ function ViewExerciseTemplate() {
       <div>
         <h3>Time: {x.created_at}</h3>
         <p>THIS IS ID:{x.template_id}/</p>
-        {/* <p>Template ID: {matchingTemplate}</p> */}
       </div>
     );
   }
-  //settime
 
-  // function handleStartWorkout(id) {
-
-  //   dispatch({ type: "ADD_TIME", payload: id });
-
-  //}
-  //
   function grabID(id) {
     history.push(`/exercises/${id}`);
   }
 
   function handleStartWorkout(id) {
-    // const currentTemplate = template.find(
-    //   (templateObj) => templateObj.id === id
-    // );
-
     dispatch({ type: "CREATE_WORKOUT", payload: id, history: history }); //make a work
   }
 
@@ -88,93 +76,87 @@ function ViewExerciseTemplate() {
   }
 
   return (
-    <>
-      <section className="newtemplate">
-        <div className="template-card">
-          {editingTemplate ? (
-            <>
-              <input
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                className="template-input"
-                placeholder="Template Name"
-              />
-              <button onClick={handleEditTemplateSubmit}>Submit</button>
-              <button onClick={handleCancelEditTemplate}>Cancel</button>
-            </>
-          ) : (
-            <>
-              <input
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                className="template-input"
-                placeholder="Template Name"
-              />
-              <button onClick={submitTemplate}>New Template</button>
-            </>
-          )}
-        </div>
-      </section>
+    
+<>
+    <section className="newtemplate">
+    <Card>
+            <Card.Body>
+                {editingTemplate ? (
+                    <>
+                        <input
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                            className="form-control mb-2"
+                            placeholder="Template Name"
+                        />
+                        <Button variant="primary" className="mr-2" onClick={handleEditTemplateSubmit}>Submit</Button>
+                        <Button variant="secondary" onClick={handleCancelEditTemplate}>Cancel</Button>
+                    </>
+                ) : (
+                    <>
+                        <input
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                            className="form-control mb-2"
+                            placeholder="Template Name"
+                        />
+                        <Button variant="primary" onClick={submitTemplate}>New Template</Button>
+                    </>
+                )}
+            </Card.Body>
+        </Card>
+    </section>
 
-      <h1>Previous templates</h1>
-      <div className="ExerciseTemplateContainer">
+    <h1 className="mt-4">Previous templates</h1>
+    <div className="row">
         {template.map((template, index) => {
-          return (
-            <tr key={index}>
-              {editingTemplate?.id === template.id ? (
-                <>
-                  <input
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                    className="template-input"
-                    placeholder="Template Name"
-                  />
-                  <button onClick={handleEditTemplateSubmit}>Submit</button>
-                  <button onClick={handleCancelEditTemplate}>Cancel</button>
-                </>
-              ) : (
-                <>
-                  {/* {workoutTime.map((time, index) => {
-                    const matchingTemplate = template.filter(
-                      (templateObj) =>
-                        templateObj.id === workoutTime.template_id
-                    );
-                    return (
-                      <div key={index}>
+            return (
+                <div key={index} className="col-md-6 mb-4">
+                    <Card bg="light">
+                        <Card.Body>
+                            {editingTemplate?.id === template.id ? (
+                                <>
+                                    <input
+                                        value={name}
+                                        onChange={(event) => setName(event.target.value)}
+                                        className="form-control mb-2"
+                                        placeholder="Template Name"
+                                    />
+                                    <Button variant="primary" className="mr-2" onClick={handleEditTemplateSubmit}>Submit</Button>
+                                    <Button variant="secondary" onClick={handleCancelEditTemplate}>Cancel</Button>
+                                </>
+                            ) : (
+                                <>
+                                    {displayTime(template.id)}
 
-                        <h3>Time: {time.created_at}</h3>
-                        <p>THIS IS ID:{time.template_id}/</p>
-                        <p>Template ID: {matchingTemplate}</p>
-                      </div>
-                    );
-                  })} */}
-                  {displayTime(template.id)}
+                                    <h1 className="ExerciseTemplate mt-3">name: {template.name}</h1>
 
-                  <h1 className="ExerciseTemplate">name: {template.name}</h1>
-
-                  <button onClick={() => handleEditTemplateClick(template)}>
-                    Edit Template Name
-                  </button>
-                  <p>Exercise Count ({template.exercise_count})</p>
-                  <button onClick={() => handleStartWorkout(template.id)}>
-                    Start Workout
-                  </button>
-                  <button>Delete</button>
-                  <button onClick={() => grabID(template.id)}>Edit</button>
-                  <h2>Exercises:</h2>
-                  <ul>
-                    {template.exercises.map((exercise, index) => {
-                      return <li key={index}>{exercise.name}</li>;
-                    })}
-                  </ul>
-                </>
-              )}
-            </tr>
-          );
+                                    <Button variant="secondary" className="mr-2" onClick={() => handleEditTemplateClick(template)}>
+                                        Edit Template Name
+                                    </Button>
+                                    <p>Exercise Count ({template.exercise_count})</p>
+                                    <Button variant="primary" className="mr-2" onClick={() => handleStartWorkout(template.id)}>
+                                        Start Workout
+                                    </Button>
+                                    <Button variant="danger" className="mr-2">Delete</Button>
+                                    <Button variant="secondary" onClick={() => grabID(template.id)}>Edit</Button>
+                                    <h2 className="mt-3">Exercises:</h2>
+                                    <ul>
+                                        {template.exercises.map((exercise, index) => {
+                                            return <li key={index}>{exercise.name}</li>;
+                                        })}
+                                    </ul>
+                                </>
+                            )}
+                        </Card.Body>
+                    </Card>
+                </div>
+            
+            );
         })}
-      </div>
-    </>
-  );
+    </div>
+</>)
+    
 }
 
 export default ViewExerciseTemplate;

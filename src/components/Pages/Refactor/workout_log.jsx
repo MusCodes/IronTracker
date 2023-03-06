@@ -6,6 +6,10 @@ import { useHistory } from "react-router-dom";
 import WorkoutRow from "./workoutRow";
 import WorkoutExerciseForm from "./WorkoutExerciseForm";
 
+import { Button } from 'react-bootstrap';
+
+
+
 function WorkoutLog() {
   const params = useParams();
   const history = useHistory();
@@ -25,64 +29,66 @@ function WorkoutLog() {
     dispatch({ type: "GET_EXERCISE_TABLE" }); // refreshes templates
     dispatch({ type: "FETCH_TIME" }); // refreshes all workouts
   }, []);
-
+console.log("allWorkouts",allWorkouts);
+  
   const thisWorkout = allWorkouts.find(
     (workout) => Number(workout.id) === Number(workoutId)
   );
-  let relatedWorkouts = allWorkouts.filter(
+  console.log("thisWorkout", thisWorkout)
+  console.log("allRelatedWorkouts", relatedWorkouts);
+  let relatedWorkouts = [];
+  if(thisWorkout){
+      let relatedWorkouts = allWorkouts.filter(
     (workout) => (Number(workout.template_id) === Number(thisWorkout.template_id)) && (workout.workout_exercises.length > 0)
     );
+  }
+
     
     console.log(`this workout:`, thisWorkout);
-    
     function historicalLogs() {
       let history = [];
-      for (let i = 0; i < relatedWorkouts.length; i++) {
-        if (i > 3) {
-          break
-        };
-        
-        const thisRelatedWorkout = relatedWorkouts[i];
-        // loop over the workout logs, and for each one simply make some jsx
-        // BUT we'll have to look up the log exercise's name in relatedWorkouts[i].exercises
-        
-        //weewoaipeowiepqowiepqwo
-        const items = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
-          const templateExercise = thisRelatedWorkout.exercises.find(
-            (exercise) => Number(exercise.id) === Number(thisExercise.exercise_id)
-            );
-            console.log("this is templateExercise",templateExercise);
-            console.log("this is thisExercise",thisExercise);
-            console.log("thisRelatedWorkout",thisRelatedWorkout);
-            
-
-        return (
-            <td>{templateExercise.name} {thisExercise.reps} reps,
-            {thisExercise.weight} lb, {thisExercise.sets} sets
-            </td>
-            //<p></p>
-        );
-      });
-
+    
       history.push(
         <table className="workoutLog">
           <thead>
             <tr>
-              <td>Date</td>
-              <td colspam="100">Exercises</td>
+              <th>Exercise Name</th>
+              <th>Sets</th>
+              <th>Previous</th>
+              <th>Date</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>{thisRelatedWorkout.created_at}</td>
-              {items}
-            </tr>
-            </tbody>
+          <tbody className="logTbody" >
+            {relatedWorkouts.map((thisRelatedWorkout) => {
+              // loop over the workout logs, and for each one create a row in the table
+              const rows = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
+                const templateExercise = thisRelatedWorkout.exercises.find(
+                  (exercise) => exercise.id === thisExercise.exercise_id
+                );
+    
+                return (
+                  <tr key={thisExercise.id}>
+                    <td>{templateExercise.name}</td>
+                    <td>{thisExercise.sets}</td>
+                    <td>{thisExercise.weight} x {thisExercise.reps}</td>
+                    <td>{thisRelatedWorkout.created_at}</td>
+                  </tr>
+                );
+              });
+    
+              return rows;
+            })}
+          </tbody>
+           
+
         </table>
+        
       );
-    } // end for
-    return history;
-  }
+    
+      return <div className="workoutLogWrapper">{history}</div>;
+    }
+    
+    
   
   
 
@@ -110,7 +116,7 @@ function WorkoutLog() {
             June 15: 10 reps   100lb  2 sets
             Leg Curl ...
           */}
-          <table>
+          <table className="logTable">
             <thead>
               <tr>
                 <th>Exercise Name</th>

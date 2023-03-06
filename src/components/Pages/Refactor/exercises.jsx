@@ -2,6 +2,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux"
+import { Button } from 'react-bootstrap';
+
 
 //WORKING
 function Exercises() {
@@ -10,8 +12,12 @@ function Exercises() {
   const dispatch = useDispatch();
   const [name, setName] = useState(``);
   const id = Number(params.id);
+  console.log("this is id", id);
   const template = useSelector((store) => store.template);
   console.log("THIS IS TEMPLATE",);
+  useEffect(() =>{
+  ({type:"GET_EXERCISE_TABLE"})
+  })
 
   function addExercise() {
     dispatch({
@@ -69,35 +75,33 @@ function Exercises() {
   if (!filteredTemplate) {
     return <h1>No template found with id: {id}</h1>;
   }
-
   return (
     <>
-      <h1> Current Template:{filteredTemplate.name}</h1>
-      <input
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-        type="text"
-        placeholder="Exercise"
-      ></input>{" "}
-      <button onClick={() => handleStartWorkout(id)}>
-                    Start Workout
-                  </button>
-      <button onClick={addExercise}> add</button>
-      <div>
-        <section>
-          <h2> Current Exercises:</h2>
-          <ul>
-            {filteredTemplate.exercises.map((exerciseObj, index) => (
-              <li key={index}>
-                {exerciseObj.name}
-
-                <button onClick={() => deleteExercise(exerciseObj.id)}>
-                  delete
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
+    <div className="red">
+      <h1>Current Template: {filteredTemplate.name}</h1>
+      <div className="input-group mb-3">
+        <input
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          type="text"
+          className="form-control"
+          placeholder="Exercise"
+        />
+        <Button variant="primary" onClick={() => handleStartWorkout(id)}>Start Workout</Button>
+        <Button variant="success" onClick={addExercise}>Add</Button>
+      </div>
+      <section>
+        <h2>Current Exercises:</h2>
+        <ul className="list-group">
+          {filteredTemplate.exercises.map((exerciseObj, index) => (
+            <li className="list-group-item d-flex justify-content-between align-items-center" key={index}>
+              {exerciseObj.name}
+              <button className="btn btn-danger" onClick={() => deleteExercise(exerciseObj.id)}>Delete</button>
+             
+            </li>
+          ))}
+        </ul>
+      </section>
       </div>
     </>
   );

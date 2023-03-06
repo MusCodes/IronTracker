@@ -1,7 +1,9 @@
 import React from 'react';
 import LogOutButton from '../../Shared/LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
+import Nav from '../../Shared/Nav/Nav';
 //import { useHistory } from 'react-router-dom';
+
 
 function UserPage() {
   //const history=useHistory();
