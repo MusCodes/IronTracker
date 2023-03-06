@@ -80,7 +80,7 @@ function Exercises() {
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
   <Card className="card-pop" style={{ width: "24rem" }}>
     <Card.Body>
-      <Card.Title>Current Template: {filteredTemplate.name}</Card.Title>
+      <Card.Title className="exerciseText" >Current Template: <span className="exerciseText">{filteredTemplate.name}</span> </Card.Title>
       <div className="input-group mb-3">
         <input
           value={name}
@@ -100,7 +100,7 @@ function Exercises() {
         </Button>
       </div>
       <section>
-        <h2>Current Exercises:</h2>
+        <h2 className="exerciseText">Current Exercises:</h2>
         <ul className="list-group">
           {filteredTemplate.exercises.map((exerciseObj, index) => (
             <li

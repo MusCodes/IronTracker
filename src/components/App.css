@@ -111,6 +111,10 @@ Form Treatment
 
 
 /* LOG */
+.t1{
+  color: black;
+  font-size: medium;
+}
 .WorkoutLog {
   font-family: sans-serif;
   max-width: 800px;
@@ -163,6 +167,50 @@ Form Treatment
   cursor: pointer;
   border-radius: 5px;
 }
+.InputField--saved {
+  background-color: lightgreen;
+}
+.btn-lg{
+  font-size: 500px;
+}
+/*  */
+.ExerciseForm, .logTbody, .WorkoutRow {
+  background-color: rgb(24, 127, 179);
+  animation: colorFade 5s infinite;
+} 
+/*  */
+
+ td{
+  color: yellow;
+}
+
+.card-title h5{
+  color: yellow;
+}
+.exerciseText{
+  color: yellow;
+  font-family: cursive;
+}
+
+
+
+/*  */
+
+@keyframes colorFade {
+  0% {
+    background-color: #3e1d6b
+  }
+  50% {
+    background-color: rgb(173, 40, 173);
+  }
+  100% {
+    background-color: #25153C
+  }
+}
+
+
+/*  */
+
 
 .WorkoutLog button:hover {
   background-color: #3e8e41;
@@ -623,13 +671,13 @@ div .dot {
 }
 @keyframes colorFade {
   0% {
-    background-color: blue;
+    background-color: rgb(96, 50, 139);
   }
   50% {
-    background-color: purple;
+    background-color: rgb(98, 30, 98);
   }
   100% {
-    background-color: blue;
+    background-color: rgb(70, 70, 161);
   }
 }
 

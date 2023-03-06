@@ -11,6 +11,8 @@ function workoutRow({ workoutExercise, templateExercise }) {
     reps: workoutExercise.reps || 0,
   });
 
+  const [saved, setSaved] = useState(false); // new state variable
+
   function deleteExercise() {
     dispatch({
       type: "DELETE_WORKOUT_EXERCISE",
@@ -22,7 +24,8 @@ function workoutRow({ workoutExercise, templateExercise }) {
     dispatch({
       type: "UPDATE_WORKOUT_EXERCISE",
       payload: workoutInfo
-    })
+    });
+    setSaved(true); // set the saved state to true when the button is clicked
   }
 
   function handleRowChange(event, fieldName) {
@@ -34,6 +37,8 @@ function workoutRow({ workoutExercise, templateExercise }) {
 
   console.log('building a row');
 
+  const inputClass = saved ? 'InputField InputField--saved' : 'InputField'; // determine the input field class based on the saved state
+
   return (
     <tr className="WorkoutRow">
       <td className="ExerciseName">{templateExercise?.name}</td>
@@ -41,7 +46,7 @@ function workoutRow({ workoutExercise, templateExercise }) {
         <input
           type="text"
           name="sets"
-          className="InputField"
+          className={inputClass} // use the input field class determined above
           value={workoutInfo.sets}
           onChange={(event) => handleRowChange(event, "sets")}
         />
@@ -50,7 +55,7 @@ function workoutRow({ workoutExercise, templateExercise }) {
         <input
           type="number"
           name="weight"
-          className="InputField"
+          className={inputClass} // use the input field class determined above
           value={workoutInfo.weight}
           onChange={(event) => handleRowChange(event, "weight")}
         />
@@ -59,24 +64,29 @@ function workoutRow({ workoutExercise, templateExercise }) {
         <input
           type="number"
           name="reps"
-          className="InputField"
+          className={inputClass} // use the input field class determined above
           value={workoutInfo.reps}
           onChange={(event) => handleRowChange(event, "reps")}
         />
       </td>
       <td>
-  <button className="btn btn-success btn-sm" onClick={updateWorkoutExercise}>
-    <i className="bi bi-save"></i>
-  </button>
-</td>
-<td>
-  <button className="btn btn-danger btn-sm " onClick={deleteExercise}>
-    <i className="bi bi-trash"></i>
-  </button>
-</td>
-
+        <button
+          className="btn btn-success btn-sm"
+          onClick={updateWorkoutExercise}
+        >
+          <i className="bi bi-save"></i>
+        </button>
+      </td>
+      <td>
+        <button
+          className="btn btn-danger btn-sm "
+          onClick={deleteExercise}
+        >
+          <i className="bi bi-trash"></i>
+        </button>
+      </td>
     </tr>
   );
-  }  
+}
 
 export default workoutRow;

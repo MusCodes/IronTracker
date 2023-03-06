@@ -34,6 +34,9 @@ console.log("allWorkouts",allWorkouts);
 const thisWorkout = allWorkouts.find(
   (workout) => Number(workout.id) === Number(workoutId)
 );
+function HowToPage(){
+  history.push("/howto")
+}
 
 if (!thisWorkout) {
   return <h1>Loading...</h1>; // or some other loading state
@@ -52,10 +55,10 @@ function historicalLogs() {
     <table className="workoutLog1">
       <thead>
         <tr>
-          <th>Exercise Name</th>
-          <th>Sets</th>
-          <th>Previous</th>
-          <th>Date</th>
+          <th className="t1">Exercise Name</th>
+          <th className="t1">Sets</th>
+          <th className="t1">Previous</th>
+          <th className="t1">Date</th>
         </tr>
       </thead>
       <tbody className="logTbody">
@@ -99,6 +102,7 @@ function historicalLogs() {
       {thisWorkout && (
         <>
         <div className="WorkoutLog-history">
+          <Button onClick={HowToPage} className="mt-3 btn-dark"  >Search an Exercise</Button>
                     <header>Past History</header>
                     {historicalLogs()}
                 </div>
