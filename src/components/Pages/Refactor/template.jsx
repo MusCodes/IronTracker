@@ -16,7 +16,7 @@ function ViewExerciseTemplate() {
   console.log("this is workout time", workoutTime);
   useEffect(() => {
     dispatch({ type: "GET_EXERCISE_TABLE" });
-  }, [template]);
+  }, []);
   //
   useEffect(() => {
     if (log.length === 0) {
@@ -35,6 +35,13 @@ function ViewExerciseTemplate() {
       dispatch({ type: "FETCH_TIME" });
     }
   }, []);
+  function formatDate(timestamp) {
+    const createdAt = new Date(timestamp);
+    const date = createdAt.toLocaleDateString();
+    const time = createdAt.toLocaleTimeString();
+    return `${date} ${time}`;
+  }
+  
   function displayTime(id) {
     let x = workoutTime.find((obj) => Number(obj.template_id) === Number(id));
     console.log("THIS IS X", x);
@@ -43,8 +50,8 @@ function ViewExerciseTemplate() {
     }
     return (
       <div>
-        <h3>Time: {x.created_at}</h3>
-        <p>THIS IS ID:{x.template_id}/</p>
+        <h3>Time: {formatDate(x.created_at)}</h3>
+        
       </div>
     );
   }

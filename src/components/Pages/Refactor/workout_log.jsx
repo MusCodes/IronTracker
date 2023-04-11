@@ -47,10 +47,16 @@ const relatedWorkouts = allWorkouts.filter(
 );
   
 console.log(`this workout:`, thisWorkout);
+function formatDate(timestamp) {
+  const createdAt = new Date(timestamp);
+  const date = createdAt.toLocaleDateString();
+  const time = createdAt.toLocaleTimeString();
+  return `${date} ${time}`;
+}
 
 function historicalLogs() {
   let history = [];
-
+  
   history.push(
     <table className="workoutLog1">
       <thead>
@@ -62,26 +68,25 @@ function historicalLogs() {
         </tr>
       </thead>
       <tbody className="logTbody">
-            {relatedWorkouts.map((thisRelatedWorkout) => {
-              // loop over the workout logs, and for each one create a row in the table
-              const rows = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
-                const templateExercise = thisRelatedWorkout.exercises.find(
-                  (exercise) => exercise.id === thisExercise.exercise_id
-                );
-                console.log("thisExercise.set",thisExercise.sets);
-    
-                return (
-                  <tr key={thisExercise.id}>
-                    
-                    <td>{templateExercise.name}</td>
-                    <td>{thisExercise.sets}</td>
-                    <td>{thisExercise.weight} x {thisExercise.reps}</td>
-                    <td>{thisRelatedWorkout.created_at}</td>
-                  </tr>
-                );
-              });
-    
-              return rows;
+        {relatedWorkouts.map((thisRelatedWorkout) => {
+          // loop over the workout logs, and for each one create a row in the table
+          const rows = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
+            const templateExercise = thisRelatedWorkout.exercises.find(
+              (exercise) => exercise.id === thisExercise.exercise_id
+            );
+            console.log("thisExercise.set",thisExercise.sets);
+
+            return (
+              <tr key={thisExercise.id}>
+                <td>{templateExercise.name}</td>
+                <td>{thisExercise.sets}</td>
+                <td>{thisExercise.weight} x {thisExercise.reps}</td>
+                <td>{formatDate(thisRelatedWorkout.created_at)}</td>
+              </tr>
+            );
+          });
+
+          return rows;
             })}
           </tbody>
            

@@ -443,21 +443,24 @@ body {
 
 .wrapper h1 {
   color: orange !important;
-  top: 8%;
-  left: 50%;
+  bottom: 80%;
+  font-family: cursive;
+  
   transform: translate(-50%, -50%);
   position: absolute;
   font-family: sans-serif;
   letter-spacing: 1px;
   word-spacing: 2px;
   color: rgb(255, 255, 255);
-  font-size: 80px;
+  
   font-weight: 900;
   text-transform: uppercase;
+  left: 47%;
+  font-size: 45px;
 }
 .wrapper #mario {
-  top: 14%;
-  left: 50%;
+  bottom: 3%;
+  right: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
   font-family: sans-serif;
@@ -467,24 +470,33 @@ body {
   margin-left: 30%;
 }
 .wrapper p {
+  
   position: absolute;
-  top: 42%;
-  left: 50%;
+font-family: sans-serif;
+
+
+color: rgb(0, 0, 0);
+
+font-weight: 888;
+bottom: 16%;
+  left: 45%;
   transform: translate(-50%, -50%);
-  font-family: sans-serif;
-  letter-spacing: 1px;
-  word-spacing: 2px;
-  color: rgb(214, 179, 22);
-  font-size: 23px;
-  font-weight: 888;
+ 
 }
+
+/* ABOVE CUT */
+
+
+
+/*  */
+
 .wrapper #mario {
   position: absolute;
-  top: 78%;
-  left: 23%;
+  
+  left: 50%;
   transform: translate(-50%, -50%);
   font-size: 40%;
-  width: 8%;
+  
   height: 13;
 }
 .wrapper #getStarted {

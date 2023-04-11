@@ -15,9 +15,10 @@ function Exercises() {
   console.log("this is id", id);
   const template = useSelector((store) => store.template);
   console.log("THIS IS TEMPLATE",);
-  useEffect(() =>{
-  ({type:"GET_EXERCISE_TABLE"})
-  })
+  
+  useEffect(() => {
+    dispatch({ type: "GET_EXERCISE_TABLE" });
+  }, []);
 
   function addExercise() {
     dispatch({
@@ -33,6 +34,7 @@ function Exercises() {
         template_id: id,
       },
     });
+    dispatch({ type: "GET_EXERCISE_TABLE" });
   }
 
   function handleStartWorkout(id) {

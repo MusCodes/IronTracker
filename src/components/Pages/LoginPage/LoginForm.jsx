@@ -29,51 +29,49 @@ function LoginForm() {
   };
 
   return (
-    <div className="login-box">
-    <div className="login-key">
-      <i className="fa fa-user-circle-o" aria-hidden="true"></i>
-    </div>
-    <div className="login-form shadow">
-      <form onSubmit={login}>
-        {errors.loginMessage && (
-          <div className="alert alert-danger" role="alert">
-            {errors.loginMessage}
-          </div>
-        )}
-        <div className="form-group">
-          <label htmlFor="username" className="form-control-label">Userame:</label>
-          <input
-            type="text"
-            className="form-control"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password" className="form-control-label">Password:</label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
-        <div className="login-button">
-          <input className="btn btn-outline-primary btn-block" type="submit" name="submit" value="Log In" />
-        </div>
-      </form>
-    </div>
+    <div className="login-box mx-auto mt-5">
+  <div className="login-key">
+    <i className="fa fa-user-circle-o" aria-hidden="true"></i>
   </div>
+  <div className="login-form shadow">
+    <form onSubmit={login}>
+      {errors.loginMessage && (
+        <div className="alert alert-danger" role="alert">
+          {errors.loginMessage}
+        </div>
+      )}
+      <div className="form-group">
+        <label htmlFor="username" className="form-control-label">Userame:</label>
+        <input
+          type="text"
+          className="form-control"
+          name="username"
+          required
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="password" className="form-control-label">Password:</label>
+        <input
+          type="password"
+          className="form-control"
+          name="password"
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </div>
+      <div className="login-button">
+        <input className="btn btn-outline-primary btn-block" type="submit" name="submit" value="Log In" />
+      </div>
+    </form>
+  </div>
+</div>
+
   
   
   );
 }
-{/* <div className="login-btm">
-  <p className="login-text">Don't have an account? <a href="#">Sign up</a></p>
-</div> */}
 
 export default LoginForm;

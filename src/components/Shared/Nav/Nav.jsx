@@ -19,7 +19,7 @@ function Nav() {
 
       
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">IronTracker</h2>
       </Link>
       <div> {/* use ml-auto to move the dropdown menu to the right */}
         {/* If no user is logged in, show these links */}

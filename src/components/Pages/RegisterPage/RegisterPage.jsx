@@ -8,21 +8,29 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
-    <div className='top-Button'>
-    <RegisterForm />
-  
-    <div className="login-button-wrapper">
-      <Button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => {
-          history.push('/login');
-        }}
-      >
-        Login
-      </Button>
+    <body className='ART'> <div className='d-flex flex-column justify-content-center align-items-center h-100'>
+      <RegisterForm />
+      <div className='Exercise-Login-Button'>
+
+           <div className="login-button-wrapper mt-3">
+        <Button
+          type="button"
+          className="btn btn-primary btn-block"
+          onClick={() => {
+            history.push('/login');
+          }}
+        >
+          Login
+        </Button>
+      </div>
+      </div>
+
+   
     </div>
-  </div>
+
+
+    </body>
+  
   );
 }
 
