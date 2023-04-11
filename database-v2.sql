@@ -69,4 +69,35 @@ ALTER TABLE "workouts" ADD CONSTRAINT "workouts_fk0" FOREIGN KEY ("template_id")
 
 ALTER TABLE "exercises" ADD CONSTRAINT "exercises_fk0" FOREIGN KEY ("template_id") REFERENCES "template"("id");
 
+-- Altered Table
+ALTER TABLE "workouts"
+DROP CONSTRAINT "workouts_fk0";
+
+ALTER TABLE "workouts"
+ADD CONSTRAINT "workouts_fk0"
+FOREIGN KEY ("template_id") 
+REFERENCES "template"("id")
+ON DELETE CASCADE;
+
+ALTER TABLE "exercises"
+DROP CONSTRAINT "exercises_fk0";
+
+ALTER TABLE "exercises"
+ADD CONSTRAINT "exercises_fk0"
+FOREIGN KEY ("template_id") 
+REFERENCES "template"("id")
+ON DELETE CASCADE;
+
+
+ALTER TABLE "workout_exercises" 
+DROP CONSTRAINT "workout_exercises_fk1";
+
+ALTER TABLE "workout_exercises" 
+ADD CONSTRAINT "workout_exercises_fk1" 
+FOREIGN KEY ("workout_id") 
+REFERENCES "workouts"("id") 
+ON DELETE CASCADE;
+
+
+
 
