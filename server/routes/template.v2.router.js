@@ -113,7 +113,7 @@ router.delete("/:id",rejectUnauthenticated, (req, res) => {
 
   console.log("THIS IS ID", id);
 
-  const QUERYTEXT = `DELETE FROM "template" WHERE id = $1;`;
+  const QUERYTEXT = `DELETE FROM "template" WHERE id =$1 ;`;
   pool
     .query(QUERYTEXT, [id])
     .then((response) => {

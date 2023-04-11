@@ -28,7 +28,7 @@ function* newTemplate(action) {
       const user = yield select(store => store.user);
       const response = yield axios.post('/api/templates/', { name: action.payload.name, user_id: user.id });
       console.log('THIS IS RESPONSE FOR SUBMITTEMPLATE', response);
-      yield put({type:"ADD_EXERCISE"})
+      yield put({type:"GET_EXERCISE_TABLE"})
       //yield action.payload.history.push(`/exercises/${response.data}`)
     } catch (error) {
       console.log('ERROR ON LINE 18', error);

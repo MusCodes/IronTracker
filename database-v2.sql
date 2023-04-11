@@ -68,3 +68,5 @@ ALTER TABLE "template" ADD CONSTRAINT "template_fk0" FOREIGN KEY ("user_id") REF
 ALTER TABLE "workouts" ADD CONSTRAINT "workouts_fk0" FOREIGN KEY ("template_id") REFERENCES "template"("id");
 
 ALTER TABLE "exercises" ADD CONSTRAINT "exercises_fk0" FOREIGN KEY ("template_id") REFERENCES "template"("id");
+
+

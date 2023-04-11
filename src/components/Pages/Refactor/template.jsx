@@ -29,7 +29,7 @@ function ViewExerciseTemplate() {
     dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name } });
     setName("");
     dispatch({ type: "GET_EXERCISE_TABLE" });
-  }
+  []}
   useEffect(() => {
     if (workoutTime.length === 0) {
       dispatch({ type: "FETCH_TIME" });
