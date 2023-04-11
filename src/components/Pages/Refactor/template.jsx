@@ -35,6 +35,12 @@ function ViewExerciseTemplate() {
       dispatch({ type: "FETCH_TIME" });
     }
   }, []);
+
+  // Delete a template
+  function deleteTemplate(id){
+    dispatch({ type: `DELETE_TEMPLATE`, payload: id})
+
+  }
   function formatDate(timestamp) {
     const createdAt = new Date(timestamp);
     const date = createdAt.toLocaleDateString();
@@ -145,7 +151,8 @@ function ViewExerciseTemplate() {
                                     <Button variant="primary" className="mr-2" onClick={() => handleStartWorkout(template.id)}>
                                         Start Workout
                                     </Button>
-                                    <Button variant="danger" className="mr-2">Delete</Button>
+                                    
+                                    <Button variant="danger" className="mr-2" onClick={() => deleteTemplate(template.id) } >Delete</Button>
                                     <Button variant="secondary" onClick={() => grabID(template.id)}>Edit</Button>
                                     <h2 className="mt-3">Exercises:</h2>
                                     <ul>

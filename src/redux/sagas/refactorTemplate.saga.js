@@ -8,6 +8,7 @@ import { put, select, takeLatest } from "redux-saga/effects";
 function* viewTemplateSaga(){
     yield takeLatest(`GET_EXERCISE_TABLE`, viewExerciseTemplate)
     yield takeLatest(`SUBMIT_NEW_TEMPLATE`, newTemplate)
+    yield takeLatest(`DELETE_TEMPLATE`, deleteTemplate)
 }
 
 function* viewExerciseTemplate(){
@@ -34,4 +35,15 @@ function* newTemplate(action) {
     }
   }
   
+  function* deleteTemplate(action) {
+    try {
+      
+      yield axios.delete(`/api/templates/${Number(action.payload)}`);
+      yield put({
+        type: "GET_EXERCISE_TABLE"
+      });
+    } catch (error) {
+      console.log("Error in deleting an template", error);
+    }
+  }
 export default viewTemplateSaga
