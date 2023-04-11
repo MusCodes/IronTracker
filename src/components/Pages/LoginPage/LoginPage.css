@@ -1,0 +1,225 @@
+/* .formPanel{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+} */
+/* .body {
+    background-color: blue;
+    animation: colorFade 5s infinite;
+  }
+  
+  @keyframes colorFade {
+    0% {
+      background-color: blue;
+    }
+    50% {
+      background-color: purple;
+    }
+    100% {
+      background-color: blue;
+    }
+  } */
+
+
+  /* .login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: auto;
+    background: #2583b1;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 20px;
+  }
+  
+  .login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ECF0F5;
+  }
+  
+  .login-form {
+    margin-top: 25px;
+    text-align: left;
+  }
+  
+  input[type=text] {
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
+  }
+  
+  input[type=password] {
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    color: #ECF0F5;
+  }
+  
+  .form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+  }
+  
+  .form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #0DB8DE;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+  }
+  
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+  }
+  
+  label {
+    margin-bottom: 0px;
+  }
+  
+  .form-control-label {
+    font-size: 10px;
+    color: #6C6C6C;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  .btn-outline-primary {
+    border-color: #0DB8DE;
+    color: #0DB8DE;
+    border-radius: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #0DB8DE;
+    right: 0px;
+  }
+  
+  .login-button{
+    padding-right: 0px;
+    text-align: right;
+    margin-bottom: 25px;
+  }
+  
+  .login-text {
+    text-align: left;
+    padding-left: 0px;
+    color: rebeccapurple
+  }  
+  .login-button-wrapper{
+    background-color: black;
+    position:sticky
+  }
+   */
+
+
+
+
+   .ART {
+    position: relative;
+    margin: 10vh auto 0;
+    width: 90vw;
+    max-width: 500px;
+    height: calc(40vw + 100px);
+    max-height: 250px;
+    background: linear-gradient(0deg, #000, #272727);
+  }
+  
+  .ART:before,
+  .ART:after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(
+      45deg,
+      #fb0094,
+      #0000ff,
+      #00ff00,
+      #ffff00,
+      #ff0000,
+      #fb0094,
+      #0000ff,
+      #00ff00,
+      #ffff00,
+      #ff0000
+    );
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+  }
+  
+  @keyframes steam {
+    0% {
+      background-position: 0 0;
+    }
+    50% {
+      background-position: 400% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  .ART:after {
+    filter: blur(50px);
+  }
+
+  .form-group{
+    font-family: cursive;
+    color: #fb0094;
+  }
+
+
+
+ 
+  .login-title{
+    color: yellow;
+    font-family: cursive;
+  }
+
+  .Exercise-Login-Button{
+    position: relative;
+    bottom: -16px;
+  }

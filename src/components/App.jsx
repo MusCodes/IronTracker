@@ -24,10 +24,13 @@ import HowToPage from "./Pages/newTemplatePage/How";
 
 
 import "./App.css";
+import WorkoutLog from "./Pages/Refactor/workout_log";
 import NewTemplate from "./Pages/newTemplatePage/newTemplate";
 import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
 import Template from "./Pages/newTemplatePage/TemplateForm";
 import WorkoutTemplate from "./Pages/newTemplatePage/templateworkout";
+import ViewExerciseTemplate from "./Pages/Refactor/template";
+import Exercises from "./Pages/Refactor/exercises";
 
 function App() {
   const dispatch = useDispatch();
@@ -60,10 +63,13 @@ function App() {
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
           <ProtectedRoute
+          
             // logged in shows UserPage else shows LoginPage
             exact
             path="/user"
           >
+            
+            
             <UserPage />
           </ProtectedRoute>
 
@@ -79,7 +85,7 @@ function App() {
             {user.id ? (
               // If the user is already logged in,
               // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/test" />
             ) : (
               // Otherwise, show the login page
               <LoginPage />
@@ -101,7 +107,7 @@ function App() {
             {user.id ? (
               // If the user is already logged in,
               // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/test" />
             ) : (
               // Otherwise, show the Landing page
               <LandingPage />
@@ -119,6 +125,24 @@ function App() {
             
           
           </ProtectedRoute>
+          <ProtectedRoute path="/test">
+            <ViewExerciseTemplate/>
+            
+          
+          </ProtectedRoute>
+
+          
+          <ProtectedRoute path="/exercises/:id">
+            <Exercises/>
+            
+          
+          </ProtectedRoute>
+          <ProtectedRoute path="/workouts/:id">
+            <WorkoutLog/>
+            
+          
+          </ProtectedRoute>
+          
           {/* <ProtectedRoute path="/workout"> */}
           {/* </ProtectedRoute> */}
           {/* If none of the other routes matched, we will show a 404. */}

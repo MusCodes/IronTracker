@@ -3,48 +3,67 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import { Dropdown } from 'react-bootstrap'
+
+
 
 function Nav() {
+  
+  
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
+    
+    <div className="nav d-flex justify-content-between align-items-center">
+    <img src="https://i.ibb.co/BZKH5jm/fitness.png" alt="fitness"  width="40" height="30" />
+
+      
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">IronTracker</h2>
       </Link>
-      <div>
+      <div> {/* use ml-auto to move the dropdown menu to the right */}
         {/* If no user is logged in, show these links */}
         {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
+          <Dropdown>
+            <Dropdown.Toggle className="navLink" variant="secondary" id="dropdown-basic">
+              DropDown
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item as={Link} to="/login">Login/Register</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/about">About</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/test">Start Workout!</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
+          
+          <Dropdown>
+    <Dropdown.Toggle className="navLink" variant="secondary" id="dropdown-basic">
+      DropDown
+    </Dropdown.Toggle>
 
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
-            <LogOutButton className="navLink" />
+    <Dropdown.Menu>
+      <Dropdown.Item as={Link} to="/user">
+        User Page 
+      </Dropdown.Item>
+      <Dropdown.Item as={Link} to="/info">
+        Info Page
+      </Dropdown.Item>
+      <Dropdown.Item as={Link} to="/about">About</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/test">Start Workout!</Dropdown.Item>
+      <Dropdown.Item>
+        <LogOutButton className="navLink" />
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
           </>
         )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-        <Link className="navLink" to="/howto">
-          HowTo?
-        </Link>
-        <Link className="navLink" to="/template">
-          Start Workout!
-        </Link>
       </div>
     </div>
   );

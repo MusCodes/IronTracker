@@ -1,4 +1,4 @@
-html,
+/* html,
 body,
 #react-root {
   height: 100%;
@@ -12,20 +12,20 @@ body {
 img {
   display: inline-block;
   max-width: 100%;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
 
-.container {
+/* .container {
   padding: 20px;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Button
 -------------------------------------------------------------------------------- */
-
+/* 
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -57,10 +57,10 @@ Button
 .btn:hover {
   background-color: #008183;
   text-decoration: none;
-}
+} */
 
 /* This line makes the "Register" and "Login" buttons look like links */
-.btn_asLink {
+/* .btn_asLink {
   padding: 0;
   border-width: 0;
   border-bottom: 1px solid #444;
@@ -80,7 +80,7 @@ Button
 Alert
 -------------------------------------------------------------------------------- */
 
-.alert {
+/* .alert {
   box-sizing: border-box;
   padding: 15px 10px;
   margin: 15px 0;
@@ -89,13 +89,14 @@ Alert
   border-radius: 3px;
   color: #e01616;
   font-size: 0.8rem;
-}
+} */
+*/
 
 /* --------------------------------------------------------------------------------
 Form Treatment
 -------------------------------------------------------------------------------- */
-
-.formPanel {
+/* 
+/* .formPanel {
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
@@ -106,33 +107,593 @@ Form Treatment
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
-.Table {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+
+
+/* LOG */
+.t1{
+  color: black;
+  font-size: medium;
+}
+.WorkoutLog {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+
 }
 
-table {
+.WorkoutLog table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  
+}
+.workoutLog, .logTable1{
+  table-layout: fixed;
+}
+
+.WorkoutLog th,
+.WorkoutLog td {
+  border: 1px solid black;
+  padding: 10px;
+  
+}
+
+.WorkoutLog th {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.WorkoutLog tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.WorkoutLog header {
+  margin-top: 30px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.WorkoutLog button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  
+  cursor: pointer;
+  border-radius: 5px;
+}
+.InputField--saved {
+  background-color: lightgreen;
+}
+.btn-lg{
+  font-size: 500px;
+}
+/*  */
+.ExerciseForm, .logTbody, .WorkoutRow {
+  background-color: rgb(24, 127, 179);
+  animation: colorFade 5s infinite;
+} 
+/*  */
+
+ td{
+  color: yellow;
+}
+
+.card-title h5{
+  color: yellow;
+}
+.exerciseText{
+  color: yellow;
+  font-family: cursive;
+}
+
+
+
+/*  */
+
+@keyframes colorFade {
+  0% {
+    background-color: #3e1d6b
+  }
+  50% {
+    background-color: rgb(173, 40, 173);
+  }
+  100% {
+    background-color: #25153C
+  }
+}
+
+
+/*  */
+
+
+.WorkoutLog button:hover {
+  background-color: #3e8e41;
+}
+
+/* row */
+.WorkoutRow {
+  background-color: #f5f5f5;
+}
+
+.WorkoutRow:hover {
+  background-color: #e0e0e0;
+}
+
+.ExerciseName {
+  font-weight: bold;
+}
+
+.InputField {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+
+.SaveButton,
+.DeleteButton {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.SaveButton:hover,
+.DeleteButton:hover {
+  background-color: #3e8e41;
+}
+
+/* FORM TO SELECT EXERCISES */
+.ExerciseForm {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.FormLabel {
+  display: inline-block;
+  width: 80px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.FormInput {
+  display: inline-block;
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+.FormRow {
+  margin-bottom: 10px;
+}
+
+.FormButton {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.FormButton:hover {
+  background-color: #3e8e41;
+}
+
+/* History */
+.workoutLog {
   border-collapse: collapse;
   width: 100%;
-  max-width: 800px;
+  margin: 0 auto;
 }
 
-th,
-td {
-  border: 1px solid black;
+
+/*  */
+.logForm {
+  font-size: 14px;
+}
+
+.WorkoutRow td {
   padding: 8px;
-  text-align: left;
+  font-size: 14px;
 }
 
-th {
-  text-align: center;
+@media (max-width: 390px) {
+  .logForm th,
+  .logForm td {
+    padding: 4px;
+  }
+
+  .logForm th:nth-child(1),
+  .logForm td:nth-child(1) {
+    width: 30%;
+  }
+
+  .logForm th:nth-child(2),
+  .logForm td:nth-child(2),
+  .logForm th:nth-child(3),
+  .logForm td:nth-child(3),
+  .logForm th:nth-child(4),
+  .logForm td:nth-child(4) {
+    width: 14%;
+  }
+
+  .logForm th:nth-child(5),
+  .logForm td:nth-child(5),
+  .logForm th:nth-child(6),
+  .logForm td:nth-child(6) {
+    width: 14%;
+  }
+
+  .logForm th:nth-child(7),
+  .logForm td:nth-child(7) {
+    width: 10%;
+  }
+
+  .WorkoutRow td {
+    font-size: 12px;
+  }
 }
 
-input {
+
+
+ 
+/* sdlklkjdlskjdlskjdlskjdl */
+
+
+body {
+  background-color: red;
+}
+.navBar {
+  background-color: red;
+}
+
+/* TEMPLATE */
+.card {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.ExerciseTemplate {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+}
+
+.btn-primary:hover {
+  background-color: #0062cc !important;
+  border-color: #0062cc !important;
+}
+
+.btn-secondary {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268 !important;
+  border-color: #5a6268 !important;
+}
+
+.btn-danger {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333 !important;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+/* 
+ */
+
+.react-root {
+  background-color: pink;
+}
+/* Landing Page */
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  height: 100%;
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+  background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423);
+  position: absolute;
 }
 
+.wrapper h1 {
+  color: orange !important;
+  bottom: 80%;
+  font-family: cursive;
+  
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: rgb(255, 255, 255);
+  
+  font-weight: 900;
+  text-transform: uppercase;
+  left: 47%;
+  font-size: 45px;
+}
+.wrapper #mario {
+  bottom: 3%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: rgb(255, 255, 255);
+  margin-left: 30%;
+}
+.wrapper p {
+  
+  position: absolute;
+font-family: sans-serif;
 
+
+color: rgb(0, 0, 0);
+
+font-weight: 888;
+bottom: 16%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+ 
+}
+
+/* ABOVE CUT */
+
+
+
+/*  */
+
+.wrapper #mario {
+  position: absolute;
+  
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40%;
+  
+  height: 13;
+}
+.wrapper #getStarted {
+  position: absolute;
+  top: 78%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  font-size: 240%;
+}
+.wrapper div {
+  height: 60px;
+  width: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  animation: 4s linear infinite;
+}
+div .dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+.wrapper div:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation: animate 8s linear infinite;
+}
+.wrapper div:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(3) {
+  top: 40%;
+  left: 40%;
+  animation: animate 3s linear infinite;
+}
+.wrapper div:nth-child(4) {
+  top: 66%;
+  left: 30%;
+  animation: animate 7s linear infinite;
+}
+.wrapper div:nth-child(5) {
+  top: 90%;
+  left: 10%;
+  animation: animate 9s linear infinite;
+}
+.wrapper div:nth-child(6) {
+  top: 30%;
+  left: 60%;
+  animation: animate 5s linear infinite;
+}
+.wrapper div:nth-child(7) {
+  top: 70%;
+  left: 20%;
+  animation: animate 8s linear infinite;
+}
+.wrapper div:nth-child(8) {
+  top: 75%;
+  left: 60%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(9) {
+  top: 50%;
+  left: 50%;
+  animation: animate 6s linear infinite;
+}
+.wrapper div:nth-child(10) {
+  top: 45%;
+  left: 20%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(11) {
+  top: 10%;
+  left: 90%;
+  animation: animate 9s linear infinite;
+}
+.wrapper div:nth-child(12) {
+  top: 20%;
+  left: 70%;
+  animation: animate 7s linear infinite;
+}
+.wrapper div:nth-child(13) {
+  top: 20%;
+  left: 20%;
+  animation: animate 8s linear infinite;
+}
+.wrapper div:nth-child(14) {
+  top: 60%;
+  left: 5%;
+  animation: animate 6s linear infinite;
+}
+.wrapper div:nth-child(15) {
+  top: 90%;
+  left: 80%;
+  animation: animate 9s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: scale(0) translateY(0) rotate(70deg);
+  }
+  100% {
+    transform: scale(1.3) translateY(-100px) rotate(360deg);
+  }
+}
+
+.pancakes-text {
+  font-family: Satisfy, cursive;
+
+  margin: 1em 0;
+  color: rgb(223, 107, 5);
+  text-shadow: 0.02em 0.02em 0 rgb(165, 42, 136), 0 0 0.5em rgb(223, 202, 10);
+}
+/* P */
+.pancakes-textP {
+  font-family: Satisfy, cursive;
+
+  margin: 1em 0;
+  color: rgb(239, 188, 4);
+  text-shadow: 0.02em 0.02em 0 rgb(214, 154, 0), 0 0 0.5em rgb(238, 230, 0);
+}
+
+/* Exercise component */
+.red {
+  background-color: #ffcccc;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.red h1 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.red input[type="text"] {
+  width: 200px;
+  margin-right: 10px;
+}
+
+.red button {
+  margin-left: 10px;
+}
+
+.red section {
+  margin-top: 20px;
+}
+
+.red ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.red li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.red li button {
+  margin-left: 10px;
+}
+
+.card-pop {
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card-pop.card {
+  height: 80%;
+  background-color: blue;
+  animation: colorFade 5s infinite;
+}
+@keyframes colorFade {
+  0% {
+    background-color: rgb(96, 50, 139);
+  }
+  50% {
+    background-color: rgb(98, 30, 98);
+  }
+  100% {
+    background-color: rgb(70, 70, 161);
+  }
+}
+
+/*  */
+body {
+  background-image: linear-gradient(to bottom right, #1b74ce, #8e44ad);
+}

@@ -50,14 +50,11 @@ router.get("/workout_template/:id",rejectUnauthenticated, (req, res) => {
     });
 });
 
-
-
-
 /**
  * POST route template
  */
 // this is the post Route for the user exercise table.
-router.post("/user_exercise", (req, res) => {
+router.post("/user_exercise",rejectUnauthenticated, (req, res) => {
   console.log(req.body);
   const QUERYTEXT = `INSERT INTO "user_exercise" ("exercise_name", "workout_id", "sets","weight","reps","completed","completed_at" )
   VALUES ($1,$2,$3,$4,$5,$6,$7);`;
@@ -105,7 +102,7 @@ router.post("/workout_template",rejectUnauthenticated, (req, res) => {
 });
 
 //DELETE a set on user_exercise
-router.delete("/user_exercise/:id", (req, res) => {
+router.delete("/user_exercise/:id",rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
 
   console.log("THIS IS ID", id);
@@ -123,7 +120,7 @@ router.delete("/user_exercise/:id", (req, res) => {
 });
 
 //DELETE ROUTE FOR DELETING A TEMPLATE.
-router.delete("/workout_template/:id", (req, res) => {
+router.delete("/workout_template/:id",rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   console.log("This is id", id);
   const QUERYTEXT = `DELETE FROM "workouts" WHERE id=$1;`;
@@ -139,7 +136,7 @@ router.delete("/workout_template/:id", (req, res) => {
 });
 
 // Update TemplateName
-router.put("/workout_template/:id", (req, res) => {
+router.put("/workout_template/:id",rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   const template_name = req.body.template_name;
   const QUERYTEXT = `UPDATE "workouts"
@@ -159,7 +156,7 @@ router.put("/workout_template/:id", (req, res) => {
 });
 
 // Update reps/sets on user_exercise table.
-router.put("/user_exercise/:id", (req, res) => {
+router.put("/user_exercise/:id",rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   const exerciseName= req.body.exercise_name;
   const weight = req.body.weight;

@@ -6,6 +6,10 @@ import addExercise from './addExerciseReducer';
 import fetchExercise from './fetchExercise.reducer';
 // import watchAddExercise from './DeleteExercise.reducer';
 import fetchTemplate from './fetchTemplate.reducer';
+import template from './refactorTemplate.Reducer';
+import currentTemplate from './CurrentTemplate';
+import workoutTime from './workoutTime';
+import log from './Workout_log.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -21,6 +25,11 @@ const rootReducer = combineReducers({
   fetchExercise,
   //watchAddExercise,
   fetchTemplate,
+  template,
+  currentTemplate,
+  workoutTime,
+  log,
+  
   // deleteExercise,
   
   

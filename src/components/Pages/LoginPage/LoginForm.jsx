@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import './LoginPage.css'
+//import { Button } from 'react-bootstrap';
+
+
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -22,44 +26,51 @@ function LoginForm() {
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-  }; // end login
+  };
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <div className="login-box mx-auto mt-5">
+  <div className="login-key">
+    <i className="fa fa-user-circle-o" aria-hidden="true"></i>
+  </div>
+  <div className="login-form shadow">
+    <form onSubmit={login}>
       {errors.loginMessage && (
-        <h3 className="alert" role="alert">
+        <div className="alert alert-danger" role="alert">
           {errors.loginMessage}
-        </h3>
+        </div>
       )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
+      <div className="form-group">
+        <label htmlFor="username" className="form-control-label">Userame:</label>
+        <input
+          type="text"
+          className="form-control"
+          name="username"
+          required
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
       </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
+      <div className="form-group">
+        <label htmlFor="password" className="form-control-label">Password:</label>
+        <input
+          type="password"
+          className="form-control"
+          name="password"
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
       </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+      <div className="login-button">
+        <input className="btn btn-outline-primary btn-block" type="submit" name="submit" value="Log In" />
       </div>
     </form>
+  </div>
+</div>
+
+  
+  
   );
 }
 
