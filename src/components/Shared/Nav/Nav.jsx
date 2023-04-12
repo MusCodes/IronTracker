@@ -31,7 +31,7 @@ function Nav() {
 
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to="/login">Login/Register</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/about">About</Dropdown.Item>
+              {/* <Dropdown.Item as={Link} to="/about">About</Dropdown.Item> */}
               <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
               <Dropdown.Item as={Link} to="/test">Start Workout!</Dropdown.Item>
             </Dropdown.Menu>
@@ -48,15 +48,15 @@ function Nav() {
     </Dropdown.Toggle>
 
     <Dropdown.Menu>
-      <Dropdown.Item as={Link} to="/user">
+      {/* <Dropdown.Item as={Link} to="/user">
         User Page 
-      </Dropdown.Item>
-      <Dropdown.Item as={Link} to="/info">
+      </Dropdown.Item> */}
+      {/* <Dropdown.Item as={Link} to="/info">
         Info Page
-      </Dropdown.Item>
-      <Dropdown.Item as={Link} to="/about">About</Dropdown.Item>
-              <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
+      </Dropdown.Item> */}
+      {/* <Dropdown.Item as={Link} to="/about">About</Dropdown.Item> */}
               <Dropdown.Item as={Link} to="/test">Start Workout!</Dropdown.Item>
+              <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
       <Dropdown.Item>
         <LogOutButton className="navLink" />
       </Dropdown.Item>
