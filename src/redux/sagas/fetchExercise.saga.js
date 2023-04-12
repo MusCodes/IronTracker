@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { put, takeLatest } from "redux-saga/effects";
 
+// This generator function handles fetching exercises for the user's workout log
 function* fetchExercise() {
   try {
     const response = yield axios.get(`/api/workouts/user_exercise/`);
