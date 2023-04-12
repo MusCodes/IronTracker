@@ -17,7 +17,7 @@ function WorkoutLog() {
 
   const workoutId = Number(params.id); // to get the current's exercise template, look it up in redux
 
-  // all templates from the db
+  // all templates from the database
   let allTemplates = useSelector((store) => store.template);
   let allWorkouts = useSelector((store) => store.workoutTime);
 
