@@ -5,35 +5,11 @@ const {
   rejectUnauthenticated,
 } = require("../modules/authentication-middleware");
 
-// //GET FOR WORKOUT_EXERCISES.
-// router.get("/:id", (req, res) => {
-//   console.log("this is req.body", req.body);
-//   const id= req.params.id
-//   const QUERYTEXT = ` SELECT e.id, e.name, w.sets, w.weight, w.reps, workouts.created_at
-//   FROM "exercises" as e 
-//   JOIN "workout_exercises" as w ON w.exercise_id = e.id 
-//   JOIN workouts ON workouts.id = w.workout_id 
-//   JOIN template t ON t.id = e.template_id 
-//   WHERE t.id = $1
-//   ORDER BY w.sets ASC;`
-//   pool
-//     .query(QUERYTEXT,[id])
-//     .then((results) => {
-//       console.log("this is results", results);
-//       res.send(results.rows);
-//     })
-//     .catch((error) => {
-//       console.log("error in workout_exercises GET ROUTE ", error);
-//       res.sendStatus(500);
-//     });
-// });
-//
-
-//GET FOR WORKOUT_EXERCISES.
+// Get all workout exercises.
 router.get("/", (req, res) => {
   console.log("this is req.body", req.body);
-  
-  const QUERYTEXT = `SELECT * FROM "workout_exercises"`
+
+  const QUERYTEXT = `SELECT * FROM "workout_exercises"`;
   pool
     .query(QUERYTEXT)
     .then((results) => {
@@ -95,6 +71,8 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       console.log("error with user_exercise POST line 54", error);
     });
 });
+
+// Update workout exercises
 router.put("/:id", rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   const sets = req.body.sets;

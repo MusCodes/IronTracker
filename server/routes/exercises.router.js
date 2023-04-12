@@ -84,6 +84,7 @@ router.put("/:id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+// route to a exercise by template id
 router.get("/:template_id", (req, res) => {
   console.log("this is req.body", req.body);
   const id = req.params.template_id;

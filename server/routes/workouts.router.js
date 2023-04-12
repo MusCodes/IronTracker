@@ -7,10 +7,6 @@ const {
 
 // GET / - get all workouts
 router.get("/", rejectUnauthenticated, (req, res) => {
-  // TODO: Add a sub-query to grab workout_exercises for this workout (so that
-  // the logs come along with it)
-  //   (SELECT coalesce(json_agg(exercises),'[]'::json) FROM "exercises" WHERE "exercises"."template_id"= "template"."id") as exercises,
-
   const QUERYTEXT = ` SELECT
   "workouts"."id",
   "workouts"."created_at",
@@ -34,7 +30,7 @@ FROM
 
 // POST / - create a new workout by template_id
 router.post("/", rejectUnauthenticated, (req, res) => {
-  // TODO: Returning * and send result.rows[0] back via res.send
+  //  Returning * and send result.rows[0] back via res.send
   console.log(req.body);
   const QUERYTEXT = `INSERT INTO "workouts" ("created_at", "template_id")
   VALUES (now(), $1) RETURNING *;`;
@@ -70,11 +66,5 @@ router.delete("/:id", rejectUnauthenticated, (req, res) => {
       console.log("error in workout delete", error);
     });
 });
-
-// PUT[x] /:id - edit a given workout by id
-
-// POST /exercise_log/ - create a new workout log by a given workout_id and exercise_id
-// [x]DELETE /exercise_log/:exercise_id - delete a workout log by id
-// [x]PUT /exercise_log/:exercise_id - update a workout log (reps / sets / etc)
 
 module.exports = router;
