@@ -91,7 +91,7 @@ router.get("/template",rejectUnauthenticated, (req, res) => {
     });
 });
 
-// POST /
+// POST for templates
 router.post("/",rejectUnauthenticated, (req, res) => {
   // req.body: { name: 'leg day' }
   console.log(req.body);
@@ -107,7 +107,7 @@ router.post("/",rejectUnauthenticated, (req, res) => {
     });
 });
 
-// DELETE /:id
+// DELETE TEMPLATE /:id
 router.delete("/:id",rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
 
@@ -125,7 +125,7 @@ router.delete("/:id",rejectUnauthenticated, (req, res) => {
     });
 });
 
-// PUT /:id
+// PUT UPDATE TEMPLATE BY  /:id
 router.put("/",rejectUnauthenticated, (req, res) => {
   const id = req.body.id;
   const name = req.body.name;
