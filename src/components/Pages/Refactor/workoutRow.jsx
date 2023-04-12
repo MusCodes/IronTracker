@@ -23,7 +23,7 @@ function workoutRow({ workoutExercise, templateExercise }) {
   function updateWorkoutExercise() {
     dispatch({
       type: "UPDATE_WORKOUT_EXERCISE",
-      payload: workoutInfo
+      payload: workoutInfo,
     });
     setSaved(true); // set the saved state to true when the button is clicked
   }
@@ -35,9 +35,9 @@ function workoutRow({ workoutExercise, templateExercise }) {
     });
   }
 
-  console.log('building a row');
+  console.log("building a row");
 
-  const inputClass = saved ? 'InputField InputField--saved' : 'InputField'; // determine the input field class based on the saved state
+  const inputClass = saved ? "InputField InputField--saved" : "InputField"; // determine the input field class based on the saved state
 
   return (
     <tr className="WorkoutRow">
@@ -78,10 +78,7 @@ function workoutRow({ workoutExercise, templateExercise }) {
         </button>
       </td>
       <td>
-        <button
-          className="btn btn-danger btn-sm "
-          onClick={deleteExercise}
-        >
+        <button className="btn btn-danger btn-sm " onClick={deleteExercise}>
           <i className="bi bi-trash"></i>
         </button>
       </td>
