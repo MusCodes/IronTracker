@@ -6,9 +6,7 @@ import { useHistory } from "react-router-dom";
 import WorkoutRow from "./workoutRow";
 import WorkoutExerciseForm from "./WorkoutExerciseForm";
 
-import { Button, Card } from 'react-bootstrap';
-
-
+import { Button, Card } from "react-bootstrap";
 
 function WorkoutLog() {
   const params = useParams();
@@ -29,95 +27,95 @@ function WorkoutLog() {
     dispatch({ type: "GET_EXERCISE_TABLE" }); // refreshes templates
     dispatch({ type: "FETCH_TIME" }); // refreshes all workouts
   }, []);
-console.log("allWorkouts",allWorkouts);
-  
-const thisWorkout = allWorkouts.find(
-  (workout) => Number(workout.id) === Number(workoutId)
-);
-function HowToPage(){
-  history.push("/howto")
-}
+  console.log("allWorkouts", allWorkouts);
 
-if (!thisWorkout) {
-  return <h1>Loading...</h1>; // or some other loading state
-}
+  const thisWorkout = allWorkouts.find(
+    (workout) => Number(workout.id) === Number(workoutId)
+  );
+  function HowToPage() {
+    history.push("/howto");
+  }
 
-const relatedWorkouts = allWorkouts.filter(
-  (workout) => (Number(workout.template_id) === Number(thisWorkout.template_id)) && (workout.workout_exercises.length > 0)
-);
-  
-console.log(`this workout:`, thisWorkout);
-function formatDate(timestamp) {
-  const createdAt = new Date(timestamp);
-  const date = createdAt.toLocaleDateString();
-  const time = createdAt.toLocaleTimeString();
-  return `${date} ${time}`;
-}
+  if (!thisWorkout) {
+    return <h1>Loading...</h1>; // or some other loading state
+  }
 
-function historicalLogs() {
-  let history = [];
-  
-  history.push(
-    <table className="workoutLog1">
-      <thead>
-        <tr>
-          <th className="t1">Exercise Name</th>
-          <th className="t1">Sets</th>
-          <th className="t1">Previous</th>
-          <th className="t1">Date</th>
-        </tr>
-      </thead>
-      <tbody className="logTbody">
-        {relatedWorkouts.map((thisRelatedWorkout) => {
-          // loop over the workout logs, and for each one create a row in the table
-          const rows = thisRelatedWorkout.workout_exercises.map((thisExercise) => {
-            const templateExercise = thisRelatedWorkout.exercises.find(
-              (exercise) => exercise.id === thisExercise.exercise_id
+  const relatedWorkouts = allWorkouts.filter(
+    (workout) =>
+      Number(workout.template_id) === Number(thisWorkout.template_id) &&
+      workout.workout_exercises.length > 0
+  );
+
+  console.log(`this workout:`, thisWorkout);
+  function formatDate(timestamp) {
+    const createdAt = new Date(timestamp);
+    const date = createdAt.toLocaleDateString();
+    const time = createdAt.toLocaleTimeString();
+    return `${date} ${time}`;
+  }
+
+  function historicalLogs() {
+    let history = [];
+
+    history.push(
+      <table className="workoutLog1">
+        <thead>
+          <tr>
+            <th className="t1">Exercise Name</th>
+            <th className="t1">Sets</th>
+            <th className="t1">Previous</th>
+            <th className="t1">Date</th>
+          </tr>
+        </thead>
+        <tbody className="logTbody">
+          {relatedWorkouts.map((thisRelatedWorkout) => {
+            // loop over the workout logs, and for each one create a row in the table
+            const rows = thisRelatedWorkout.workout_exercises.map(
+              (thisExercise) => {
+                const templateExercise = thisRelatedWorkout.exercises.find(
+                  (exercise) => exercise.id === thisExercise.exercise_id
+                );
+                console.log("thisExercise.set", thisExercise.sets);
+
+                return (
+                  <tr key={thisExercise.id}>
+                    <td>{templateExercise.name}</td>
+                    <td>{thisExercise.sets}</td>
+                    <td>
+                      {thisExercise.weight} x {thisExercise.reps}
+                    </td>
+                    <td>{formatDate(thisRelatedWorkout.created_at)}</td>
+                  </tr>
+                );
+              }
             );
-            console.log("thisExercise.set",thisExercise.sets);
 
-            return (
-              <tr key={thisExercise.id}>
-                <td>{templateExercise.name}</td>
-                <td>{thisExercise.sets}</td>
-                <td>{thisExercise.weight} x {thisExercise.reps}</td>
-                <td>{formatDate(thisRelatedWorkout.created_at)}</td>
-              </tr>
-            );
-          });
+            return rows;
+          })}
+        </tbody>
+      </table>
+    );
 
-          return rows;
-            })}
-          </tbody>
-           
-
-        </table>
-        
-      );
-    
-      return <div className="workoutLogWrapper">{history}</div>;
-    }
-    
-    
-  
-  
+    return <div className="workoutLogWrapper">{history}</div>;
+  }
 
   return (
     <div className="WorkoutLog">
       {thisWorkout && (
         <>
-        <div className="WorkoutLog-history">
-          <Card>
-
-          <h1>Don't know how to perform the Exercise?</h1>
-          <Button onClick={HowToPage} className="mt-3 btn-dark"  >Search an Exercise</Button>
-          </Card>
-                    <header>Past History</header>
-                    {historicalLogs()}
-                </div>
+          <div className="WorkoutLog-history">
+            <Card>
+              <h1>Don't know how to perform the Exercise?</h1>
+              <Button onClick={HowToPage} className="mt-3 btn-dark">
+                Search an Exercise
+              </Button>
+            </Card>
+            <header>Past History</header>
+            {historicalLogs()}
+          </div>
 
           <WorkoutExerciseForm workout={thisWorkout} />
-    
+
           <table className="logTable1">
             <thead className="logForm">
               <tr>
@@ -138,27 +136,25 @@ function historicalLogs() {
                   // grab the current exercise from thisWorkout.exercises
                   const templateExercise = thisWorkout.exercises.find(
                     (exercise) =>
-                    Number(exercise.id) ===
-                    Number(workout_exercise.exercise_id)
-                    );
-                    return (
-                      <WorkoutRow
+                      Number(exercise.id) ===
+                      Number(workout_exercise.exercise_id)
+                  );
+                  return (
+                    <WorkoutRow
                       workoutExercise={workout_exercise}
                       templateExercise={templateExercise}
-                      />
-                      );
-                    }
-                    )}
+                    />
+                  );
+                }
+              )}
             </tbody>
           </table>
-          
+
           {/* <button onClick={handleAddRow}>Add Set</button> */}
-          
 
           <button onClick={() => history.push("/test")}>
             Complete Workout
           </button>
-          
         </>
       )}
     </div>
