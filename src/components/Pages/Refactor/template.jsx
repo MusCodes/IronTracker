@@ -60,7 +60,7 @@ function ViewExerciseTemplate() {
     }
     return (
       <div>
-        <h3>Time: {formatDate(x.created_at)}</h3>
+        <p>Last Completed: {formatDate(x.created_at)}</p>
       </div>
     );
   }
