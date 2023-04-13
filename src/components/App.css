@@ -324,6 +324,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .wrapper {
   height: 100%;
   width: 100%;
@@ -335,19 +336,18 @@ body {
   color: orange !important;
   bottom: 80%;
   font-family: cursive;
-  
   transform: translate(-50%, -50%);
   position: absolute;
   font-family: sans-serif;
   letter-spacing: 1px;
   word-spacing: 2px;
   color: rgb(255, 255, 255);
-  
   font-weight: 900;
   text-transform: uppercase;
   left: 47%;
   font-size: 45px;
 }
+
 .wrapper #mario {
   bottom: 3%;
   right: 50%;
@@ -359,20 +359,17 @@ body {
   color: rgb(255, 255, 255);
   margin-left: 30%;
 }
+
 .wrapper p {
-  
   position: absolute;
-font-family: sans-serif;
-
-
-color: rgb(0, 0, 0);
-
-font-weight: 888;
-bottom: 16%;
+  font-family: sans-serif;
+  color: rgb(0, 0, 0);
+  font-weight: 888;
+  bottom: 16%;
   left: 45%;
   transform: translate(-50%, -50%);
- 
 }
+
 
 /* ABOVE CUT */
 
