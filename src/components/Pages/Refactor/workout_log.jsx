@@ -53,8 +53,10 @@ function WorkoutLog() {
     const time = createdAt.toLocaleTimeString();
     return `${date} ${time}`;
   }
+  
 
   function historicalLogs() {
+   
     let history = [];
 
     history.push(
@@ -115,7 +117,7 @@ function WorkoutLog() {
           </div>
 
           <WorkoutExerciseForm workout={thisWorkout} />
-
+          <header>Current Exercise Log</header>
           <table className="logTable1">
             <thead className="logForm">
               <tr>

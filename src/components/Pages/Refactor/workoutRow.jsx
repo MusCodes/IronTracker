@@ -27,20 +27,22 @@ function workoutRow({ workoutExercise, templateExercise }) {
     });
     setSaved(true); // set the saved state to true when the button is clicked
   }
-
+  
   function handleRowChange(event, fieldName) {
     setWorkoutInfo({
       ...workoutInfo,
       [fieldName]: event.target.value,
     });
   }
-
+  
   console.log("building a row");
-
+  
   const inputClass = saved ? "InputField InputField--saved" : "InputField"; // determine the input field class based on the saved state
-
+  
   return (
-    <tr className="WorkoutRow">
+    <> 
+    
+       <tr className="WorkoutRow">
       <td className="ExerciseName">{templateExercise?.name}</td>
       <td>
         <input
@@ -83,6 +85,8 @@ function workoutRow({ workoutExercise, templateExercise }) {
         </button>
       </td>
     </tr>
+    </>
+
   );
 }
 
