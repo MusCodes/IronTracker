@@ -584,3 +584,38 @@ div .dot {
 body {
   background-image: linear-gradient(to bottom right, #1b74ce, #8e44ad);
 }
+/* desktop view for landing page */
+@media screen and (min-width: 1024px) {
+  .wrapper h1 {
+    left: 50%;
+    font-size: 60px;
+    margin-bottom: 40px !important;
+  }
+
+  .wrapper p {
+    bottom: 26%;
+    left: 50%;
+    font-size: 30px;
+    max-width: 70%;
+    line-height: 50px;
+    top: 28% !important;
+   
+  }
+
+  .wrapper #mario {
+    bottom: 3%;
+    right: 30%;
+    width: 120px;
+    height: 250px;
+    
+  }
+
+  .wrapper #getStarted {
+    top: 70%;
+    left: 50%;
+    font-size: 32px;
+    margin-bottom: 50%;
+  }
+}
+/*  */
+
