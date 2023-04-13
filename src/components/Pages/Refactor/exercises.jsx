@@ -87,11 +87,11 @@ function Exercises() {
                 className="form-control"
                 placeholder="Exercise"
               />
-              <Button variant="primary" onClick={() => handleStartWorkout(id)}>
-                Start Workout
-              </Button>
               <Button variant="success" onClick={addExercise}>
                 Add
+              </Button>
+              <Button variant="primary" onClick={() => handleStartWorkout(id)}>
+                Start Workout
               </Button>
             </div>
             <section>

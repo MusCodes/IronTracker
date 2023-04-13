@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import WorkoutRow from "./workoutRow";
 import WorkoutExerciseForm from "./WorkoutExerciseForm";
 
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 
 
@@ -107,31 +107,17 @@ function historicalLogs() {
       {thisWorkout && (
         <>
         <div className="WorkoutLog-history">
+          <Card>
+
+          <h1>Don't know how to perform the Exercise?</h1>
           <Button onClick={HowToPage} className="mt-3 btn-dark"  >Search an Exercise</Button>
+          </Card>
                     <header>Past History</header>
                     {historicalLogs()}
                 </div>
 
           <WorkoutExerciseForm workout={thisWorkout} />
-          {/* Previous Workouts from the same template? */}
-          {/* 
-            - Grab the most recent X workouts with the same template id (sorted reverse order by created_at)
-            - Show each of the workout logs by exercise name:
-            June 10 2022:
-            Leg Press: 10 reps @ 100lb (2 sets)
-            Leg Curl: 5 reps @ 100lb (3 sets)
-            
-            June 12 2022:
-            etc.
-            
-            - Strech Goal: Process the workout logs so that you can group all exercises together
-            by the same type:
-            
-            
-            Leg Press  June 10: 10 reps   90lb   2 sets
-            June 15: 10 reps   100lb  2 sets
-            Leg Curl ...
-          */}
+    
           <table className="logTable1">
             <thead className="logForm">
               <tr>
