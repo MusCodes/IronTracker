@@ -51,7 +51,7 @@ function HowToPage() {
     <div>
       <Form onSubmit={handleSearch}>
       <Form.Group>
-  <Form.Label className="font-weight-bold">Search BodyPart or Exercise Name:</Form.Label>
+  <Form.Label className="font-weight-bold" style={{fontSize: "30px", color: "white"}} >Search BodyPart or Exercise Name:</Form.Label>
   <Form.Control type="text" placeholder="Enter search term" name="search" />
 </Form.Group>
 
@@ -62,7 +62,7 @@ function HowToPage() {
       <Button onClick={() =>history.goBack()} className="mt-3 btn-dark"  >Back to Workout</Button>
       {firstExercise && (
         <div>
-          <h2>{firstExercise.bodyPart}:</h2>
+          <h2 style={{color: `white`, fontSize: `30px`}}>{firstExercise.bodyPart}:</h2>
           <Card>
             <Card.Img variant="top" src={firstExercise.gifUrl} alt={firstExercise.name} />
             <Card.Body>
@@ -77,7 +77,7 @@ function HowToPage() {
       )}
       {otherExercises.length > 0 && (
         <div>
-          <h2>Alternative:</h2>
+          <h2 style={{fontSize: `30px`, color: 'white'}} >Alternative Exercises:</h2>
           <div className="card-deck">
             {otherExercises.slice(0, 3).map((exercise, index) => (
               <Card key={index}>
