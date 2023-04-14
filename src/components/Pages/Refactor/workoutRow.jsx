@@ -46,7 +46,7 @@ function workoutRow({ workoutExercise, templateExercise }) {
       <td className="ExerciseName">{templateExercise?.name}</td>
       <td>
         <input
-          type="text"
+          type="number"
           name="sets"
           className={inputClass} // use the input field class determined above
           value={workoutInfo.sets}

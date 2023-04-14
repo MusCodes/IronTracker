@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+// This component is the Form users will use to add their workouts.
 function WorkoutExerciseForm({ workout }) {
   const dispatch = useDispatch();
 
@@ -27,6 +28,7 @@ function WorkoutExerciseForm({ workout }) {
 
   return (
     <>
+    <header>Enter your workouts</header>
       <div className="ExerciseForm">
         <label className="FormLabel">Exercise:</label>
         <select
@@ -49,7 +51,7 @@ function WorkoutExerciseForm({ workout }) {
           <label className="FormLabel">Sets:</label>
           <input
             className="FormInput"
-            type="text"
+            type="number"
             name="sets"
             value={workoutInfo.sets}
             onChange={(event) => handleRowChange(event, "sets")}
