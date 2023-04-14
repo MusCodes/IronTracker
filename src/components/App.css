@@ -603,9 +603,10 @@ body {
   }
 
   .wrapper #mario {
-    bottom: 3%;
-    right: 30%;
+    bottom: 2%;
+    /* right: 100%; */
     width: 120px;
+    left: 450px;
     height: 250px;
     
   }
