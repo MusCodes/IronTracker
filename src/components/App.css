@@ -618,5 +618,32 @@ body {
     margin-bottom: 50%;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .card-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .HowToCard {
+    width: 40%;
+    max-width: 300px; 
+    margin: 0 10px;
+    justify-content: center ;
+    display: flex ;
+    flex-wrap: wrap;
+    margin-left: 30%;
+  }
+  
+  .card-deck {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .GifName{
+    margin-left: 30%;
+    margin-top: 30px;
+  }
+}  
 /*  */
 

@@ -62,11 +62,11 @@ function HowToPage() {
       <Button onClick={() =>history.goBack()} className="mt-3 btn-dark"  >Back to Workout</Button>
       {firstExercise && (
         <div>
-          <h2 style={{color: `white`, fontSize: `30px`}}>{firstExercise.bodyPart}:</h2>
-          <Card>
+          <h2 className='GifName' style={{color: `white`, fontSize: `30px`}}>{firstExercise.bodyPart}:</h2>
+          <Card className='HowToCard'>
             <Card.Img variant="top" src={firstExercise.gifUrl} alt={firstExercise.name} />
             <Card.Body>
-              <Card.Title>{firstExercise.name}</Card.Title>
+              <Card.Title> Name:{firstExercise.name}</Card.Title>
               <Card.Text>
                 <p>Equipment: {firstExercise.equipment}</p>
                 <p>Target: {firstExercise.target}</p>
@@ -77,13 +77,14 @@ function HowToPage() {
       )}
       {otherExercises.length > 0 && (
         <div>
-          <h2 style={{fontSize: `30px`, color: 'white'}} >Alternative Exercises:</h2>
+          <h2 className='GifName' style={{fontSize: `30px`, color: 'white'}} >Alternative Exercises:</h2>
           <div className="card-deck">
             {otherExercises.slice(0, 3).map((exercise, index) => (
               <Card key={index}>
                 <Card.Img variant="top" src={exercise.gifUrl} alt={exercise.name} />
                 <Card.Body>
-                  <Card.Title>{exercise.name}</Card.Title>
+                  <Card.Title>Name:
+                     {exercise.name}</Card.Title>
                   <Card.Text>
                     <p>Equipment: {exercise.equipment}</p>
                     <p>Target: {exercise.target}</p>
@@ -96,12 +97,12 @@ function HowToPage() {
       )}
       {otherExercises.length < 3 && (
         <div>
-          <h2>More Alternatives:</h2>
+          <h2 className='GifName'>More Alternatives:</h2>
           <div className="card-deck">{otherExercises.slice(3).map((exercise, index) => (
-<Card key={index}>
+<Card   key={index}>
 <Card.Img variant="top" src={exercise.gifUrl} alt={exercise.name} />
 <Card.Body>
-<Card.Title>{exercise.name}</Card.Title>
+<Card.Title> Exercise Name: {exercise.name}</Card.Title>
 <Card.Text>
 <p>Equipment: {exercise.equipment}</p>
 <p>Target: {exercise.target}</p>
