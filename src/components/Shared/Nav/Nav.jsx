@@ -15,7 +15,7 @@ function Nav() {
   return (
     
     <div className="nav d-flex justify-content-between align-items-center">
-    <img src="https://i.ibb.co/BZKH5jm/fitness.png" alt="fitness"  width="40" height="30" />
+    <img src="https://i.ibb.co/BZKH5jm/fitness.png" alt="fitness"  width="100" height="100" />
 
       
       <Link to="/home">

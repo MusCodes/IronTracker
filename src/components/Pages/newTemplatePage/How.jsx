@@ -62,7 +62,7 @@ function HowToPage() {
       <Button onClick={() =>history.goBack()} className="mt-3 btn-dark"  >Back to Workout</Button>
       {firstExercise && (
         <div>
-          <h2 className='GifName' style={{color: `white`, fontSize: `30px`}}>{firstExercise.bodyPart}:</h2>
+          <h2 className='GifName' style={{color: `white`, fontSize: `30px`}}> {firstExercise.bodyPart}</h2>
           <Card className='HowToCard'>
             <Card.Img variant="top" src={firstExercise.gifUrl} alt={firstExercise.name} />
             <Card.Body>
