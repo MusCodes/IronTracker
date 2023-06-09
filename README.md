@@ -1,7 +1,7 @@
 # Project Name
 IronTracker
 
-<link>  Visit Website Website <link>
+
 ![landing Page](/images/landingPage.png)
 
 ## Description
