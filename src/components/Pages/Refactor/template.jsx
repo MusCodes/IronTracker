@@ -92,12 +92,24 @@ function ViewExerciseTemplate() {
   }
   // this function will be the button users will click to make default templates
   function DefaultWorkoutProgram() {
-    dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name:"back/biceps"} });
-    dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name:"chest/triceps"} });
-    dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name:"shoulders/legs"} });
-    setName("");
+    function Chest() {
+      dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name: "chest/triceps" } });
+    }
+  
+    function BackBiceps() {
+      dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name: "back/biceps" } });
+    }
+  
+    function ShouldersLegs() {
+      dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name: "shoulders/legs" } });
+    }
+    
     dispatch({ type: "GET_EXERCISE_TABLE" });
     [];
+    Chest();
+    BackBiceps();
+    ShouldersLegs();
+    // these 3 functions will be nested inside DefaultWorkoutProgram
   }
   return (
     <>
