@@ -90,7 +90,15 @@ function ViewExerciseTemplate() {
     setEditingTemplate(null);
     setName("");
   }
-
+  // this function will be the button users will click to make default templates
+  function DefaultWorkoutProgram() {
+    dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name:"back/biceps"} });
+    dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name:"chest/triceps"} });
+    dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name:"shoulders/legs"} });
+    setName("");
+    dispatch({ type: "GET_EXERCISE_TABLE" });
+    [];
+  }
   return (
     <>
       <section className="newtemplate">
@@ -132,7 +140,7 @@ function ViewExerciseTemplate() {
         </Card>
       </section>
 
-      <Button>Beginner workout Program</Button>
+      <Button onClick={DefaultWorkoutProgram} >Beginner workout Program</Button>
 
       <h1 className="mt-4">Previous templates</h1>
       <div className="row">

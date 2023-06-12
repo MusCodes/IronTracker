@@ -35,6 +35,7 @@ function WorkoutTemplate() {
     setEditing(null);
   }
 
+
   return (
     <>
     
