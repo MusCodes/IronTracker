@@ -132,6 +132,8 @@ function ViewExerciseTemplate() {
         </Card>
       </section>
 
+      <Button>Beginner workout Program</Button>
+
       <h1 className="mt-4">Previous templates</h1>
       <div className="row">
         {template.map((template, index) => {
