@@ -94,6 +94,13 @@ function ViewExerciseTemplate() {
   function DefaultWorkoutProgram() {
     function Chest() {
       dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name: "chest/triceps" } });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "triceps",
+          template_id: 116,
+        },
+      });
     }
   
     function BackBiceps() {
