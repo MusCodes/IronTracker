@@ -40,15 +40,14 @@ router.post("/:template_id", rejectUnauthenticated, (req, res) => {
 });
 
 // this post route is for the default exercises
-router.post("/:template_id", rejectUnauthenticated, (req, res) => {
-  const id = req.params.template_id;
-  const name = req.body.name;
+router.post("/", rejectUnauthenticated, (req, res) => {
+  
 
-  const QUERYTEXT = `INSERT INTO "exercises" ("name", "template_id")
-  VALUES ($1, $2);`;
+  const QUERYTEXT = `INSERT INTO "exercises" ("name", "template_id", id)
+  VALUES ($1, $2, $3);`;
 
   pool
-    .query(QUERYTEXT, [name, id])
+    .query(QUERYTEXT, [req.body.name, req.body.id, req.body.template_id])
     .then((result) => {
       res.sendStatus(201);
     })

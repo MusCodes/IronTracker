@@ -108,7 +108,7 @@ router.post("/",rejectUnauthenticated, (req, res) => {
 });
 
 // this is a post route for the default templates
-router.post("/",rejectUnauthenticated, (req, res) => {
+router.post("/default",rejectUnauthenticated, (req, res) => {
   // req.body: { name: 'leg day' }
   console.log(req.body);
   const QUERYTEXT = `INSERT INTO "template" ("name",user_id, id ) VALUES ($1,$2,$3);`;

@@ -6,6 +6,7 @@ function* viewTemplateSaga() {
   yield takeLatest(`GET_EXERCISE_TABLE`, viewExerciseTemplate);
   yield takeLatest(`SUBMIT_NEW_TEMPLATE`, newTemplate);
   yield takeLatest(`DELETE_TEMPLATE`, deleteTemplate);
+  yield takeLatest(`DEFAULT_TEMPLATE`, defaultTemplate)
 }
 
 function* viewExerciseTemplate() {
@@ -26,7 +27,23 @@ function* newTemplate(action) {
     const response = yield axios.post("/api/templates/", {
       name: action.payload.name,
       user_id: user.id,
-      id: action.payload.id
+    });
+    console.log("THIS IS RESPONSE FOR SUBMITTEMPLATE", response);
+    yield put({ type: "GET_EXERCISE_TABLE" });
+  } catch (error) {
+    console.log("ERROR ON LINE 18", error);
+  }
+}
+
+// this saga is for default template
+function* defaultTemplate(action) {
+  try {
+    // were importing user from the redux store to grab the id and send it in the post request.
+    const user = yield select((store) => store.user);
+    const response = yield axios.post("/api/templates/default/", {
+      name: action.payload.name,
+      user_id: user.id,
+      id: action.payload.templateId,
     });
     console.log("THIS IS RESPONSE FOR SUBMITTEMPLATE", response);
     yield put({ type: "GET_EXERCISE_TABLE" });
