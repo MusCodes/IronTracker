@@ -98,17 +98,74 @@ function ViewExerciseTemplate() {
         type: "ADD_EXERCISES",
         payload: {
           name: "triceps",
-          template_id: 116,
+          template_id: 200,
+        },
+      });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "chest",
+          template_id: 200,
+        },
+      });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "bench",
+          template_id: 200,
         },
       });
     }
   
     function BackBiceps() {
       dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name: "back/biceps" } });
+            dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "rows",
+          template_id: 200,
+        }
+      });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "pull downs",
+          template_id: 200,
+        }
+      });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "curls",
+          template_id: 200,
+        },
+      });
+      
     }
   
     function ShouldersLegs() {
       dispatch({ type: "SUBMIT_NEW_TEMPLATE", payload: { name: "shoulders/legs" } });
+            dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "shoulder presses",
+          template_id: 200,
+        },
+      });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "hip thrusts",
+          template_id: 200,
+        },
+      });
+      dispatch({
+        type: "ADD_EXERCISES",
+        payload: {
+          name: "squats",
+          template_id: 200,
+        },
+      });
     }
     
     dispatch({ type: "GET_EXERCISE_TABLE" });

@@ -26,6 +26,7 @@ function* newTemplate(action) {
     const response = yield axios.post("/api/templates/", {
       name: action.payload.name,
       user_id: user.id,
+      id: action.payload.id
     });
     console.log("THIS IS RESPONSE FOR SUBMITTEMPLATE", response);
     yield put({ type: "GET_EXERCISE_TABLE" });

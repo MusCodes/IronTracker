@@ -107,6 +107,22 @@ router.post("/",rejectUnauthenticated, (req, res) => {
     });
 });
 
+// this is a post route for the default templates
+router.post("/",rejectUnauthenticated, (req, res) => {
+  // req.body: { name: 'leg day' }
+  console.log(req.body);
+  const QUERYTEXT = `INSERT INTO "template" ("name",user_id, id ) VALUES ($1,$2,$3);`;
+
+  pool
+    .query(QUERYTEXT, [req.body.name,req.body.user_id, req.body.id])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("error with user_exercise POST line 54", error);
+    });
+});
+
 // DELETE TEMPLATE /:id
 router.delete("/:id",rejectUnauthenticated, (req, res) => {
   const id = req.params.id;

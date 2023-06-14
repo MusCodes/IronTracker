@@ -39,6 +39,23 @@ router.post("/:template_id", rejectUnauthenticated, (req, res) => {
     });
 });
 
+// this post route is for the default exercises
+router.post("/:template_id", rejectUnauthenticated, (req, res) => {
+  const id = req.params.template_id;
+  const name = req.body.name;
+
+  const QUERYTEXT = `INSERT INTO "exercises" ("name", "template_id")
+  VALUES ($1, $2);`;
+
+  pool
+    .query(QUERYTEXT, [name, id])
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log("error with exercises", error);
+    });
+});
 // DELETE /:id - delete a exercise by its id
 router.delete("/:id", rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
