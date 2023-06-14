@@ -97,25 +97,25 @@ function ViewExerciseTemplate() {
       dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "triceps",
+          name: "barbell incline bench press",
           templateId: 1,
-          exercise_Id: 10,
+          exercise_Id: 2,
         },
       });
       dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "chest",
+          name: "assisted chest dip (kneeling)",
           templateId: 1,
-          exercise_Id: 20,
+          exercise_Id: 3,
         },
       });
       dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "bench",
+          name: "cable triceps pushdown",
           templateId: 1,
-          exercise_Id: 30,
+          exercise_Id: 4,
         },
       });
     }
@@ -125,17 +125,17 @@ function ViewExerciseTemplate() {
       dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "rows",
+          name: "lever reverse t-bar row",
           templateId: 2,
-          exercise_Id: 70,
+          exercise_Id: 5,
         },
       });
       dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "pull downs",
+          name: "alternate lateral pulldown",
           templateId: 2,
-          exercise_Id: 50 ,
+          exercise_Id: 6 ,
         }
       });
       dispatch({
@@ -143,7 +143,7 @@ function ViewExerciseTemplate() {
         payload: {
           name: " cable hammer curl",
           templateId: 2,
-          exercise_Id: 60 ,
+          exercise_Id: 7 ,
         },
       });
       
@@ -154,24 +154,24 @@ function ViewExerciseTemplate() {
             dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "shoulder presses",
+          name: "dumbbell one arm shoulder press",
           templateId: 3,
-          exercise_Id: 70,
+          exercise_Id: 8,
         },
       });
       dispatch({
         type:"ADD_DEFAULT_EXERCISES", 
-          payload: {name: "hip thrusts",
+          payload: {name: "cable lateral raise",
           templateId: 3 ,
-          exercise_Id: 80,
+          exercise_Id: 9,
         },
       });
       dispatch({
         type: "ADD_DEFAULT_EXERCISES",
         payload: {
-          name: "squats",
+          name: "barbell deadlift",
           templateId: 3,
-          exercise_Id: 90 ,
+          exercise_Id: 10 ,
         },
       });
     }
@@ -290,7 +290,7 @@ function ViewExerciseTemplate() {
                         variant="secondary"
                         onClick={() => grabID(template.id)}
                       >
-                        Edit
+                        Add Exercises
                       </Button>
                       <h2 className="mt-3">Exercises:</h2>
                       <ul>
