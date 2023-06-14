@@ -93,79 +93,87 @@ function ViewExerciseTemplate() {
   // this function will be the button users will click to make default templates
   function DefaultWorkoutProgram() {
     function Chest() {
-      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "chest/triceps", templateId: 799 } });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "triceps",
-      //     template_id: 250,
-      //   },, templateId:
-      // });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "chest",
-      //     template_id: 200,
-      //   },
-      // });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "bench",
-      //     template_id: 200,
-      //   },
-      // });
+      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "chest/triceps", templateId: 1 } });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "triceps",
+          templateId: 1,
+          exercise_Id: 10,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "chest",
+          templateId: 1,
+          exercise_Id: 20,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "bench",
+          templateId: 1,
+          exercise_Id: 30,
+        },
+      });
     }
   
     function BackBiceps() {
-      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "back/biceps", templateId: 800 } });
-      //       dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "rows",
-      //     template_id: 200,
-      //   }
-      // });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "pull downs",
-      //     template_id: 200,
-      //   }
-      // });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "curls",
-      //     template_id: 200,
-      //   },
-      // });
+      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "back/biceps", templateId: 2 } });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "rows",
+          templateId: 2,
+          exercise_Id: 70,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "pull downs",
+          templateId: 2,
+          exercise_Id: 50 ,
+        }
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: " cable hammer curl",
+          templateId: 2,
+          exercise_Id: 60 ,
+        },
+      });
       
     }
   
     function ShouldersLegs() {
-      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "shoulders/legs", templateId: 798 } });
-      //       dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "shoulder presses",
-      //     template_id: 200,
-      //   },
-      // });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "hip thrusts",
-      //     template_id: 200,
-      //   },
-      // });
-      // dispatch({
-      //   type: "ADD_EXERCISES",
-      //   payload: {
-      //     name: "squats",
-      //     template_id: 200,
-      //   },
-      // });
+      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "shoulders/legs", templateId: 3 } });
+            dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "shoulder presses",
+          templateId: 3,
+          exercise_Id: 70,
+        },
+      });
+      dispatch({
+        type:"ADD_DEFAULT_EXERCISES", 
+          payload: {name: "hip thrusts",
+          templateId: 3 ,
+          exercise_Id: 80,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "squats",
+          templateId: 3,
+          exercise_Id: 90 ,
+        },
+      });
     }
     
     dispatch({ type: "GET_EXERCISE_TABLE" });

@@ -43,11 +43,11 @@ router.post("/:template_id", rejectUnauthenticated, (req, res) => {
 router.post("/", rejectUnauthenticated, (req, res) => {
   
 
-  const QUERYTEXT = `INSERT INTO "exercises" ("name", "template_id", id)
+  const QUERYTEXT = `INSERT INTO "exercises" ("name", "template_id", "id")
   VALUES ($1, $2, $3);`;
 
   pool
-    .query(QUERYTEXT, [req.body.name, req.body.id, req.body.template_id])
+    .query(QUERYTEXT, [req.body.name,req.body.template_id, req.body.id ])
     .then((result) => {
       res.sendStatus(201);
     })
