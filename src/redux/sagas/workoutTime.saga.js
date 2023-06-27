@@ -9,7 +9,7 @@ function* createWorkout(action) {
       template_id: action.payload,
     });
     // push user to the workout page
-    yield action.history.push(`/workouts/${response.data.id}`); 
+    yield action.history.push(`/workouts/${response.data.id}`);
     yield put({ type: "FETCH_TIME" }); // refreshes all workouts
   } catch (error) {
     console.log("ERROR IN FETCHEXERCISE SAGA", error);
