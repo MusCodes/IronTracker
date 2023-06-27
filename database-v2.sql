@@ -101,3 +101,13 @@ ON DELETE CASCADE;
 
 
 
+
+ALTER SEQUENCE template_id_seq RESTART WITH 4;
+
+
+ALTER TABLE "template" ALTER COLUMN "id" SET DEFAULT nextval('template_id_seq');
+
+
+ALTER SEQUENCE exercises_id_seq RESTART WITH 11;
+
+ALTER TABLE "exercises" ALTER COLUMN "id" SET DEFAULT nextval('exercises_id_seq');

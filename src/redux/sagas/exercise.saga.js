@@ -14,8 +14,23 @@ function* addExercise(action) {
     console.log("ERROR ON LINE 18", error);
   }
 }
+function* addDefaultExercises(action){
+  try {
+    // were importing user from the redux store to grab the id and send it in the post request.
+    const response = yield axios.post("/api/exercises/", {
+      name: action.payload.name,
+      template_id: action.payload.templateId,
+      id: action.payload.exercise_Id,
+    });
+    console.log("THIS IS RESPONSE FOR DEFAULT EXERCISES", response);
+    
+  } catch (error) {
+    console.log("ERROR ON LINE 29", error);
+  }
+}
 
 function* addExerciseSaga() {
   yield takeLatest("ADD_EXERCISES", addExercise);
+  yield takeLatest("ADD_DEFAULT_EXERCISES", addDefaultExercises)
 }
 export default addExerciseSaga;
