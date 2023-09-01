@@ -90,7 +90,99 @@ function ViewExerciseTemplate() {
     setEditingTemplate(null);
     setName("");
   }
-
+  // this function will be the button users will click to make default templates
+  function DefaultWorkoutProgram() {
+    function Chest() {
+      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "chest/triceps", templateId: 1 } });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "barbell incline bench press",
+          templateId: 1,
+          exercise_Id: 2,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "assisted chest dip (kneeling)",
+          templateId: 1,
+          exercise_Id: 3,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "cable triceps pushdown",
+          templateId: 1,
+          exercise_Id: 4,
+        },
+      });
+    }
+  
+    function BackBiceps() {
+      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "back/biceps", templateId: 2 } });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "lever reverse t-bar row",
+          templateId: 2,
+          exercise_Id: 5,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "alternate lateral pulldown",
+          templateId: 2,
+          exercise_Id: 6 ,
+        }
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: " cable hammer curl",
+          templateId: 2,
+          exercise_Id: 7 ,
+        },
+      });
+      
+    }
+  
+    function ShouldersLegs() {
+      dispatch({ type: "DEFAULT_TEMPLATE", payload: { name: "shoulders/legs", templateId: 3 } });
+            dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "dumbbell one arm shoulder press",
+          templateId: 3,
+          exercise_Id: 8,
+        },
+      });
+      dispatch({
+        type:"ADD_DEFAULT_EXERCISES", 
+          payload: {name: "cable lateral raise",
+          templateId: 3 ,
+          exercise_Id: 9,
+        },
+      });
+      dispatch({
+        type: "ADD_DEFAULT_EXERCISES",
+        payload: {
+          name: "barbell deadlift",
+          templateId: 3,
+          exercise_Id: 10 ,
+        },
+      });
+    }
+    
+    dispatch({ type: "GET_EXERCISE_TABLE" });
+    [];
+    Chest();
+    BackBiceps();
+    ShouldersLegs();
+    // these 3 functions will be nested inside DefaultWorkoutProgram
+  }
   return (
     <>
       <section className="newtemplate">
@@ -131,9 +223,11 @@ function ViewExerciseTemplate() {
           </Card.Body>
         </Card>
       </section>
+
               <a>   <Button href="https://docs.google.com/document/d/1y_LnYvoGBNV2GuJHHeCAKhJcA2iJ-hFcLR7I6vaFiLc/edit?usp=sharing" target="_blank" rel="noopener noreferrer" > Beginner workout Program</Button>
  </a>
    
+
       <h1 className="mt-4">Previous templates</h1>
       <div className="row">
         {template.map((template, index) => {
@@ -198,7 +292,9 @@ function ViewExerciseTemplate() {
                         variant="secondary"
                         onClick={() => grabID(template.id)}
                       >
-                        Add exercise
+
+                        Add Exercises
+
                       </Button>
                       <h2 className="mt-3">Exercises:</h2>
                       <ul>
