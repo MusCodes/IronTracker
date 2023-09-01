@@ -22,7 +22,7 @@ function WorkoutTemplate() {
 
   function onSubmit(id) {
     dispatch({ type: "FETCH_TEMPLATE", payload: { history } });
-    history.push(`/test/${id}`);
+    history.push(`/main/${id}`);
   }
 
   function editTemplateName(workout) {

@@ -11,7 +11,7 @@ function* viewTemplateSaga() {
 function* viewExerciseTemplate() {
   try {
     const response = yield axios.get(`/api/templates/`);
-    console.log("THIS IS XXXX RESPONSE", response);
+    
     console.log("this is response.data.exercises", response.data.id);
     yield put({ type: "v2SET_TEMPLATE", payload: response.data });
   } catch (error) {

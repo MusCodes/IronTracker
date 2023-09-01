@@ -24,7 +24,7 @@ function* SubmitTemplate(action){
     try{
         const response= yield axios.post("/api/workouts/workout_template",{template_name:action.payload.name})
         console.log("THIS IS RESPONSE FOR SUBMITTEMPLATE",response)
-      yield action.payload.history.push(`/test/${response.data.id}`) 
+      yield action.payload.history.push(`/main/${response.data.id}`) 
 
     } catch (error ){
         console.log ("ERROR ON LINE 18", error)

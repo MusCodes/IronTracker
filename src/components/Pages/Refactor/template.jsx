@@ -12,10 +12,10 @@ function ViewExerciseTemplate() {
   const [editingTemplate, setEditingTemplate] = useState(null);
   const workoutTime = useSelector((store) => store.workoutTime);
   let log = useSelector((store) => store.log);
-  console.log("this is log", log);
+
 
   const history = useHistory();
-  console.log("this is workout time", workoutTime);
+
   // The GET_EXERCISE_TABLE and CURRENT_LOG_SAGA actions are dispatched to fetch the list of exercise templates and workout log from the database
   useEffect(() => {
     dispatch({ type: "GET_EXERCISE_TABLE" });
@@ -54,7 +54,7 @@ function ViewExerciseTemplate() {
 
   function displayTime(id) {
     let x = workoutTime.find((obj) => Number(obj.template_id) === Number(id));
-    console.log("THIS IS X", x);
+  
     if (!x) {
       return <></>;
     }
@@ -131,9 +131,9 @@ function ViewExerciseTemplate() {
           </Card.Body>
         </Card>
       </section>
-
-      <Button>Beginner workout Program</Button>
-
+              <a>   <Button href="https://docs.google.com/document/d/1y_LnYvoGBNV2GuJHHeCAKhJcA2iJ-hFcLR7I6vaFiLc/edit?usp=sharing" target="_blank" rel="noopener noreferrer" > Beginner workout Program</Button>
+ </a>
+   
       <h1 className="mt-4">Previous templates</h1>
       <div className="row">
         {template.map((template, index) => {
@@ -198,7 +198,7 @@ function ViewExerciseTemplate() {
                         variant="secondary"
                         onClick={() => grabID(template.id)}
                       >
-                        Edit
+                        Add exercise
                       </Button>
                       <h2 className="mt-3">Exercises:</h2>
                       <ul>

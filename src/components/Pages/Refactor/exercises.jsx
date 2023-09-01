@@ -12,9 +12,9 @@ function Exercises() {
   const dispatch = useDispatch();
   const [name, setName] = useState(``);
   const id = Number(params.id);
-  console.log("this is id", id);
+ 
   const template = useSelector((store) => store.template);
-  console.log("THIS IS TEMPLATE");
+  
 
   useEffect(() => {
     dispatch({ type: "GET_EXERCISE_TABLE" });
@@ -46,7 +46,7 @@ function Exercises() {
       dispatch({ type: "GET_EXERCISE_TABLE" });
     }
   }, []);
-  console.log("This is template", template);
+
 
   function deleteExercise(exerciseId) {
     dispatch({
