@@ -85,7 +85,7 @@ function App() {
             {user.id ? (
               // If the user is already logged in,
               // redirect to the /user page
-              <Redirect to="/test" />
+              <Redirect to="/main" />
             ) : (
               // Otherwise, show the login page
               <LoginPage />
@@ -96,7 +96,7 @@ function App() {
             {user.id ? (
               // If the user is already logged in,
               // redirect them to the /user page
-              <Redirect to="/test" />
+              <Redirect to="/main" />
             ) : (
               // Otherwise, show the registration page
               <RegisterPage />
@@ -107,13 +107,13 @@ function App() {
             {user.id ? (
               // If the user is already logged in,
               // redirect them to the /user page
-              <Redirect to="/test" />
+              <Redirect to="/main" />
             ) : (
               // Otherwise, show the Landing page
               <LandingPage />
             )}
           </Route>
-          <ProtectedRoute path="/test/:workout_id">
+          <ProtectedRoute path="/main/:workout_id">
             <TableWithInputs />
           </ProtectedRoute>
           <ProtectedRoute path="/template">
@@ -125,7 +125,7 @@ function App() {
             
           
           </ProtectedRoute>
-          <ProtectedRoute path="/test">
+          <ProtectedRoute path="/main">
             <ViewExerciseTemplate/>
             
           

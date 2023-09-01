@@ -19,7 +19,7 @@ function WorkoutLog() {
   let allTemplates = useSelector((store) => store.template);
   let allWorkouts = useSelector((store) => store.workoutTime);
 
-  // let workoutTime = useSelector((store) => store.workoutTime);
+ 
   let log = useSelector((store) => store.log);
 
   // Fetch the template if it's not already in the state
@@ -122,12 +122,12 @@ function WorkoutLog() {
             <thead className="logForm">
               <tr>
                 <th>Exercise Name</th>
-                {/* <th> WorkoutID</th> */}
+             
                 <th>Sets</th>
-                {/* <th>Previous</th> */}
+            
                 <th>Weight</th>
                 <th>Reps</th>
-                {/* <th>Time</th> */}
+                
                 <th>Finish</th>
                 <th>Delete </th>
               </tr>
@@ -152,9 +152,9 @@ function WorkoutLog() {
             </tbody>
           </table>
 
-          {/* <button onClick={handleAddRow}>Add Set</button> */}
+  
 
-          <button onClick={() => history.push("/test")}>
+          <button onClick={() => history.push("/main")}>
             Complete Workout
           </button>
         </>

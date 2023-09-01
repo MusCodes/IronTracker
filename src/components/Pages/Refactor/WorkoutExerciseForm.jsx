@@ -52,6 +52,7 @@ function WorkoutExerciseForm({ workout }) {
           <input
             className="FormInput"
             type="number"
+            min="0"
             name="sets"
             value={workoutInfo.sets}
             onChange={(event) => handleRowChange(event, "sets")}
@@ -63,6 +64,7 @@ function WorkoutExerciseForm({ workout }) {
           <input
             className="FormInput"
             type="number"
+            min="0"
             name="weight"
             value={workoutInfo.weight}
             onChange={(event) => handleRowChange(event, "weight")}
@@ -75,6 +77,7 @@ function WorkoutExerciseForm({ workout }) {
             className="FormInput"
             type="number"
             name="reps"
+            min="0"
             value={workoutInfo.reps}
             onChange={(event) => handleRowChange(event, "reps")}
           />

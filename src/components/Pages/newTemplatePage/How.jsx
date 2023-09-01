@@ -51,7 +51,7 @@ function HowToPage() {
     <div>
       <Form onSubmit={handleSearch}>
       <Form.Group>
-  <Form.Label className="font-weight-bold" style={{fontSize: "30px", color: "white"}} >Search BodyPart or Exercise Name:</Form.Label>
+  <Form.Label className="font-weight-bold" style={{fontSize: "30px", color: "white"}} >Search Exercise Name:</Form.Label>
   <Form.Control type="text" placeholder="Enter search term" name="search" />
 </Form.Group>
 
