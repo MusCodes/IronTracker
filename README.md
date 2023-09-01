@@ -1,5 +1,4 @@
-# Project Name
-IronTracker
+# IRonTracker
 
 
 ![landing Page](/images/landingPage.png)
