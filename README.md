@@ -41,5 +41,4 @@ This application has been tested before launch but if you experience any bugs fe
 Email: MusCodes7@gmail.com
 Linkin: https://www.linkedin.com/in/mustafakmustafa/
 
-## acknowledgement
-Thank you Emerging Digital Academy for helping me acquire the skills to build this.
+.
