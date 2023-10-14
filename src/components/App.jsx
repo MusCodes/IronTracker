@@ -20,17 +20,17 @@ import InfoPage from "./Pages/InfoPage/InfoPage";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
-import HowToPage from "./Pages/newTemplatePage/How";
+import HowToPage from "./Pages/main-components/How-to-exercise";
 
 
 import "./App.css";
-import WorkoutLog from "./Pages/Refactor/workout_log";
-import NewTemplate from "./Pages/newTemplatePage/newTemplate";
+import WorkoutLog from "./Pages/main-components/workout_log";
+
 import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
 import Template from "./Pages/newTemplatePage/TemplateForm";
 import WorkoutTemplate from "./Pages/newTemplatePage/templateworkout";
-import ViewExerciseTemplate from "./Pages/Refactor/template";
-import Exercises from "./Pages/Refactor/exercises";
+import ViewExerciseTemplate from "./Pages/main-components/template";
+import Exercises from "./Pages/main-components/exercises";
 
 function App() {
   const dispatch = useDispatch();
