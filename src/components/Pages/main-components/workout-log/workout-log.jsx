@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import WorkoutRow from "./workoutRow";
-import WorkoutExerciseForm from "./WorkoutExerciseForm";
+import WorkoutRow from "./Workout-Row";
+import WorkoutExerciseForm from "./Workout-exercise-form";
 import { Button, Card } from "react-bootstrap";
 
 function WorkoutLog() {
