@@ -24,13 +24,13 @@ import HowToPage from "./Pages/main-components/How-to-exercise";
 
 
 import "./App.css";
-import WorkoutLog from "./Pages/main-components/workout_log";
+import WorkoutLog from "./Pages/main-components/workout-log/workout-log";
 
-import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
-import Template from "./Pages/newTemplatePage/TemplateForm";
-import WorkoutTemplate from "./Pages/newTemplatePage/templateworkout";
-import ViewExerciseTemplate from "./Pages/main-components/template";
-import Exercises from "./Pages/main-components/exercises";
+
+import Template from "./Pages/main-components/templates/TemplateForm";
+import WorkoutTemplate from "./Pages/main-components/templates/templateworkout";
+import ViewExerciseTemplate from "./Pages/main-components/templates/Main-page-template";
+import Exercises from "./Pages/main-components/exercises/exercises";
 
 function App() {
   const dispatch = useDispatch();
@@ -113,9 +113,7 @@ function App() {
               <LandingPage />
             )}
           </Route>
-          <ProtectedRoute path="/main/:workout_id">
-            <TableWithInputs />
-          </ProtectedRoute>
+        
           <ProtectedRoute path="/template">
             <Template />
             <WorkoutTemplate />
