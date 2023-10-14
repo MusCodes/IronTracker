@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import WorkoutRow from "./workoutRow";
 import WorkoutExerciseForm from "./WorkoutExerciseForm";
-
 import { Button, Card } from "react-bootstrap";
 
 function WorkoutLog() {
@@ -13,50 +11,51 @@ function WorkoutLog() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const workoutId = Number(params.id); // to get the current's exercise template, look it up in redux
+  const workoutId = Number(params.id); // Get the workout ID from the URL
 
-  // all templates from the database
+  // Retrieve data from the Redux store
   let allTemplates = useSelector((store) => store.template);
   let allWorkouts = useSelector((store) => store.workoutTime);
-
- 
   let log = useSelector((store) => store.log);
 
-  // Fetch the template if it's not already in the state
+  // Fetch the template and workout data if it's not already in the state
   useEffect(() => {
-    dispatch({ type: "GET_EXERCISE_TABLE" }); // refreshes templates
-    dispatch({ type: "FETCH_TIME" }); // refreshes all workouts
+    dispatch({ type: "GET_EXERCISE_TABLE" }); // Refresh the exercise templates
+    dispatch({ type: "FETCH_TIME" }); // Refresh all workouts
   }, []);
-  console.log("allWorkouts", allWorkouts);
 
+  // Find the current workout based on the workout ID
   const thisWorkout = allWorkouts.find(
     (workout) => Number(workout.id) === Number(workoutId)
   );
+
+  // Function to navigate to the "HowToPage"
   function HowToPage() {
     history.push("/howto");
   }
 
+  // Display a loading message if the workout data is not available
   if (!thisWorkout) {
-    return <h1>Loading...</h1>; // or some other loading state
+    return <h1>Loading...</h1>;
   }
 
+  // Filter related workouts based on the template and exercise data
   const relatedWorkouts = allWorkouts.filter(
     (workout) =>
       Number(workout.template_id) === Number(thisWorkout.template_id) &&
       workout.workout_exercises.length > 0
   );
 
-  console.log(`this workout:`, thisWorkout);
+  // Function to format a timestamp into a readable date and time
   function formatDate(timestamp) {
     const createdAt = new Date(timestamp);
     const date = createdAt.toLocaleDateString();
     const time = createdAt.toLocaleTimeString();
     return `${date} ${time}`;
   }
-  
 
+  // Function to render the historical workout logs
   function historicalLogs() {
-   
     let history = [];
 
     history.push(
@@ -71,13 +70,12 @@ function WorkoutLog() {
         </thead>
         <tbody className="logTbody">
           {relatedWorkouts.map((thisRelatedWorkout) => {
-            // loop over the workout logs, and for each one create a row in the table
+            // Loop over the workout logs, and for each one, create a row in the table
             const rows = thisRelatedWorkout.workout_exercises.map(
               (thisExercise) => {
                 const templateExercise = thisRelatedWorkout.exercises.find(
                   (exercise) => exercise.id === thisExercise.exercise_id
                 );
-                console.log("thisExercise.set", thisExercise.sets);
 
                 return (
                   <tr key={thisExercise.id}>
@@ -101,6 +99,7 @@ function WorkoutLog() {
     return <div className="workoutLogWrapper">{history}</div>;
   }
 
+  // Render the component
   return (
     <div className="WorkoutLog">
       {thisWorkout && (
@@ -117,25 +116,22 @@ function WorkoutLog() {
           </div>
 
           <WorkoutExerciseForm workout={thisWorkout} />
+
           <header>Current Exercise Log</header>
           <table className="logTable1">
             <thead className="logForm">
               <tr>
                 <th>Exercise Name</th>
-             
                 <th>Sets</th>
-            
                 <th>Weight</th>
                 <th>Reps</th>
-                
                 <th>Finish</th>
-                <th>Delete </th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               {thisWorkout.workout_exercises.map(
                 (workout_exercise, rowIndex) => {
-                  // grab the current exercise from thisWorkout.exercises
                   const templateExercise = thisWorkout.exercises.find(
                     (exercise) =>
                       Number(exercise.id) ===
@@ -151,8 +147,6 @@ function WorkoutLog() {
               )}
             </tbody>
           </table>
-
-  
 
           <button onClick={() => history.push("/main")}>
             Complete Workout

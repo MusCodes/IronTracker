@@ -21,8 +21,7 @@ function Nav() {
       <Link to="/home">
         <h2 className="nav-title">IronTracker</h2>
       </Link>
-      <div> {/* use ml-auto to move the dropdown menu to the right */}
-        {/* If no user is logged in, show these links */}
+      <div> 
         {!user.id && (
           <Dropdown>
             <Dropdown.Toggle className="navLink" variant="secondary" id="dropdown-basic">
@@ -31,7 +30,7 @@ function Nav() {
 
             <Dropdown.Menu>
               <Dropdown.Item as={Link} to="/login">Login/Register</Dropdown.Item>
-              {/* <Dropdown.Item as={Link} to="/about">About</Dropdown.Item> */}
+            
               <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
               <Dropdown.Item as={Link} to="/main">Start Workout!</Dropdown.Item>
             </Dropdown.Menu>
@@ -48,13 +47,7 @@ function Nav() {
     </Dropdown.Toggle>
 
     <Dropdown.Menu>
-      {/* <Dropdown.Item as={Link} to="/user">
-        User Page 
-      </Dropdown.Item> */}
-      {/* <Dropdown.Item as={Link} to="/info">
-        Info Page
-      </Dropdown.Item> */}
-      {/* <Dropdown.Item as={Link} to="/about">About</Dropdown.Item> */}
+     
               <Dropdown.Item as={Link} to="/main">Start Workout!</Dropdown.Item>
               <Dropdown.Item as={Link} to="/howto">HowTo?</Dropdown.Item>
       <Dropdown.Item>

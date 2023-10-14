@@ -20,17 +20,17 @@ import InfoPage from "./Pages/InfoPage/InfoPage";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
-import HowToPage from "./Pages/newTemplatePage/How";
+import HowToPage from "./Pages/main-components/How-to-exercise";
 
 
 import "./App.css";
-import WorkoutLog from "./Pages/Refactor/workout_log";
-import NewTemplate from "./Pages/newTemplatePage/newTemplate";
-import TableWithInputs from "./Pages/newTemplatePage/newTemplate";
-import Template from "./Pages/newTemplatePage/TemplateForm";
-import WorkoutTemplate from "./Pages/newTemplatePage/templateworkout";
-import ViewExerciseTemplate from "./Pages/Refactor/template";
-import Exercises from "./Pages/Refactor/exercises";
+import WorkoutLog from "./Pages/main-components/workout-log/workout-log";
+
+
+import Template from "./Pages/main-components/templates/TemplateForm";
+import WorkoutTemplate from "./Pages/main-components/templates/templateworkout";
+import ViewExerciseTemplate from "./Pages/main-components/templates/Main-page-template";
+import Exercises from "./Pages/main-components/exercises/exercises";
 
 function App() {
   const dispatch = useDispatch();
@@ -113,9 +113,7 @@ function App() {
               <LandingPage />
             )}
           </Route>
-          <ProtectedRoute path="/main/:workout_id">
-            <TableWithInputs />
-          </ProtectedRoute>
+        
           <ProtectedRoute path="/template">
             <Template />
             <WorkoutTemplate />

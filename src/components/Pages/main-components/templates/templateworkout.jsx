@@ -9,7 +9,7 @@ function WorkoutTemplate() {
   const [newTemplateName, setNewTemplateName] = useState("");
   const workout = useSelector((store) => store.fetchTemplate);
   const id = workout.user_id;
-  
+
 
   useEffect(() => {
     dispatch({ type: `FETCH_TEMPLATE` });
@@ -38,11 +38,11 @@ function WorkoutTemplate() {
 
   return (
     <>
-    
+
     <h1>Previous Templates</h1>
         {console.log("THIS IS WORKOUTS!!!!!!!",workout)}
       {workout==null? '' :workout.map((workout, index) => {
-        
+
         if (editing === workout.id) {
           return (
             <tr key={index}>
