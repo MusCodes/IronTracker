@@ -579,7 +579,10 @@ div .dot {
     background-color: rgb(70, 70, 161);
   }
 }
-
+.scrollable-container {
+  max-height: 600px; 
+  overflow-y: auto;
+}
 /*  */
 body {
   background-image: linear-gradient(to bottom right, #1b74ce, #8e44ad);

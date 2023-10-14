@@ -94,7 +94,7 @@ function Exercises() {
                 Start Workout
               </Button>
             </div>
-            <section>
+            <section className="scrollable-container">
               <h2 className="exerciseText">Current Exercises:</h2>
               <ul className="list-group">
                 {filteredTemplate.exercises.map((exerciseObj, index) => (
