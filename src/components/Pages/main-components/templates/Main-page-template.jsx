@@ -216,7 +216,7 @@ function ViewExerciseTemplate() {
                   placeholder="Template Name"
                 />
                 <Button variant="primary" onClick={submitTemplate}>
-                  New Template
+                  Add New Template
                 </Button>
               </>
             )}

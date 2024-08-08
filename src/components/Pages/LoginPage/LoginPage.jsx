@@ -13,7 +13,7 @@ function LoginPage() {
  <div className='d-flex flex-column justify-content-center align-items-center h-100'>
     <LoginForm />
     <div className='Exercise-Login-Button'> 
-         <Button
+         {/* <Button
         type="button"
         className="btn btn-primary btn-block"
         onClick={() => {
@@ -21,7 +21,7 @@ function LoginPage() {
         }}
       >
         Register
-      </Button>
+      </Button> */}
      </div>
     <div className="register-button-wrapper mt-3">
  
