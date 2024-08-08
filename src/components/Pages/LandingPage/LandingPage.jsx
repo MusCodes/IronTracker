@@ -28,13 +28,7 @@ function LandingPage() {
             IronTracker is your one-stop-shop for all things fitness.{" "}
           </p>
 
-          <img
-            id="mario"
-            src="https://i.kym-cdn.com/photos/images/original/000/904/984/472.gif"
-            alt="fitness"
-            width="80"
-            height="170"
-          />
+         
           <Button onClick={onLogin} class="btn btn-primary" id="getStarted">
             Get Started!
           </Button>
