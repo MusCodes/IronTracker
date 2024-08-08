@@ -38,6 +38,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.8",
     "nodemon": "^2.0.4"
   },
   "browserslist": [
